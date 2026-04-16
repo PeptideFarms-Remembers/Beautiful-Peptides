@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peptide Map</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+  <header>
+    <h1>🧬 Peptide Reference Map</h1>
+    <p class="subtitle">An interactive guide to peptide categories, synergies, and research</p>
+  </header>
+
+  <div class="chart-wrapper">
+
+    <!-- SVG overlay for linking lines — sits on top of everything -->
+    <svg id="link-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="swimlane-grid" id="swimlane-grid">
+
+      <!-- Each .lane is a bucket column -->
+
+      <div class="lane" id="lane-repair" data-color="#e07b54">
+        <div class="lane-header">🩹 Repair & Inflammation</div>
+        <div class="lane-body">
+          <!-- Peptide nodes will go here -->
+          <div class="peptide-node" id="node-bpc157">BPC-157</div>
+          <div class="peptide-node" id="node-tb500">TB-500</div>
+          <div class="peptide-node" id="node-ghkcu">GHK-Cu</div>
+          <div class="peptide-node" id="node-kpv">KPV</div>
+          <div class="peptide-node" id="node-ta1">Thymosin α1</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-energy" data-color="#5b8dd9">
+        <div class="lane-header">⚡ Energy & Mitochondria</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-ss31">SS-31</div>
+          <div class="peptide-node" id="node-motsc">MOTS-c</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-recovery" data-color="#6abf69">
+        <div class="lane-header">💪 Recovery & Growth</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-sermorelin">Sermorelin</div>
+          <div class="peptide-node" id="node-cjc1295">CJC-1295</div>
+          <div class="peptide-node" id="node-ipamorelin">Ipamorelin</div>
+          <div class="peptide-node" id="node-tesamorelin">Tesamorelin</div>
+          <div class="peptide-node" id="node-igf1lr3">IGF-1 LR3</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-metabolism" data-color="#c97dd4">
+        <div class="lane-header">🔥 Metabolism & Fat Loss</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-semaglutide">Semaglutide</div>
+          <div class="peptide-node" id="node-tirzepatide">Tirzepatide</div>
+          <div class="peptide-node" id="node-retatrutide">Retatrutide</div>
+          <div class="peptide-node" id="node-aod9604">AOD-9604</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-cognitive" data-color="#f0c040">
+        <div class="lane-header">🧠 Cognitive & Focus</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-semax">Semax</div>
+          <div class="peptide-node" id="node-dihexa">Dihexa</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-stress" data-color="#e8a87c">
+        <div class="lane-header">😌 Stress & Anxiety</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-selank">Selank</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-sleep" data-color="#7b9ec9">
+        <div class="lane-header">🌙 Sleep</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-epitalon">Epitalon</div>
+          <div class="peptide-node" id="node-pinealon">Pinealon</div>
+          <div class="peptide-node" id="node-dsip">DSIP</div>
+        </div>
+      </div>
+
+      <div class="lane" id="lane-longevity" data-color="#a8d8a8">
+        <div class="lane-header">⏳ Longevity</div>
+        <div class="lane-body">
+          <!-- Epitalon also lives here — will show cross-link -->
+        </div>
+      </div>
+
+      <div class="lane" id="lane-beauty" data-color="#f4a7b9">
+        <div class="lane-header">✨ Beauty & Skin</div>
+        <div class="lane-body">
+          <!-- GHK-Cu also lives here -->
+        </div>
+      </div>
+
+      <div class="lane" id="lane-sexual" data-color="#d4a5c9">
+        <div class="lane-header">❤️ Sexual Health</div>
+        <div class="lane-body">
+          <div class="peptide-node" id="node-pt141">PT-141</div>
+          <div class="peptide-node" id="node-kisspeptin">Kisspeptin</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
