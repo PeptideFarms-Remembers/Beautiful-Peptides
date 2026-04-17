@@ -78,9 +78,9 @@
       ],
       "mechanism": "Synthetic pentadecapeptide derived from human gastric juice. Upregulates growth hormone receptors, promotes angiogenesis via VEGF, and modulates nitric oxide synthesis. Accelerates tendon-to-bone healing and reduces neuroinflammation.",
       "dosing": {
-        "SubQ / IM": "250–500 mcg/day injected near the injury site",
-        "Oral": "500 mcg–1 mg/day for gut healing",
-        "Notes": "Cycle 4–6 weeks on, 2 weeks off. Can split into two daily doses for systemic use."
+        "SubQ / IM": "250–500 mcg 1–2× daily, injected near the injury site",
+        "Oral": "250–500 mcg 2–3× daily for gut healing",
+        "Notes": "Cycle 4–6 weeks on, 2 weeks off. BID dosing is community standard for systemic use."
       },
       "side_effects": "Generally well-tolerated in animal models. Off-label human users report occasional nausea, dizziness, and injection site reactions. No confirmed serious adverse events documented. Long-term human safety data absent.",
       "blood_panel": [
@@ -89,7 +89,7 @@
         "CRP / ESR (inflammation)",
         "IGF-1"
       ],
-      "research": "Primarily rodent studies. No completed human RCTs as of 2024. Widely used off-label.",
+      "research": "Primarily rodent studies. Emerging human pilot studies on musculoskeletal injury as of 2026; no completed large Phase III RCTs. Widely used off-label.",
       "tags": [
         "🐭"
       ]
@@ -106,8 +106,8 @@
       ],
       "mechanism": "Synthetic fragment of Thymosin Beta-4. Promotes actin polymerization, cell migration, and angiogenesis. Reduces inflammation and fibrosis in injured tissue.",
       "dosing": {
-        "SubQ": "2–2.5 mg twice weekly for 4–6 weeks (loading phase)",
-        "Notes": "Maintenance: 2–2.5 mg every 2 weeks. Often stacked with BPC-157 for synergistic repair."
+        "SubQ": "5 mg/week split into 2× 2.5 mg (loading phase, 4–6 weeks)",
+        "Notes": "Maintenance: 2–2.5 mg once weekly. Often stacked with BPC-157 for synergistic repair."
       },
       "side_effects": "Well-tolerated in limited human exposure. Injection site reactions possible. Theoretical risk of promoting growth in existing tumors — avoid with any cancer history.",
       "blood_panel": [
@@ -135,9 +135,10 @@
       ],
       "mechanism": "Naturally occurring copper-binding tripeptide. Activates over 4,000 genes involved in tissue remodeling. Stimulates collagen, elastin, and glycosaminoglycan synthesis. Anti-inflammatory via TNF-α suppression.",
       "dosing": {
-        "Topical": "1–5% cream or serum applied daily to target area",
+        "Topical": "1–3% cream or serum applied daily to target area",
         "SubQ": "1–2 mg 3×/week, often stacked with BPC-157",
-        "Notes": "Topical preferred for skin and hair. Injectable for systemic collagen support."
+        "Scalp injection": "200–400 mcg diluted, 1×/week for hair loss (community off-label use)",
+        "Notes": "Topical preferred for skin. Scalp micro-injection for hair loss. Injectable SubQ for systemic collagen support."
       },
       "side_effects": "Topical use very safe with minimal systemic absorption. Injectable use has limited safety data. Excess copper may cause GI upset or toxicity — monitor serum copper with long injectable courses.",
       "blood_panel": [
@@ -164,7 +165,7 @@
       "mechanism": "C-terminal tripeptide of alpha-MSH. Binds melanocortin receptors (MC1R, MC3R) to suppress NF-κB and pro-inflammatory cytokines. Potent gut anti-inflammatory.",
       "dosing": {
         "Oral": "500 mcg–1 mg/day with water (primarily for IBD/gut inflammation)",
-        "SubQ": "100–300 mcg/day for systemic anti-inflammatory use",
+        "SubQ": "250–500 mcg/day for systemic anti-inflammatory use",
         "Notes": "Oral route preferred for gut-specific inflammation. Cycle based on symptom response."
       },
       "side_effects": "Very safe profile with minimal systemic absorption via oral route. No significant adverse events reported in available data. Long-term human studies lacking.",
@@ -204,7 +205,7 @@
         "CMP",
         "Liver enzymes"
       ],
-      "research": "Extensive human clinical trial data. Approved internationally.",
+      "research": "Extensive human clinical trial data. Approved internationally in 35+ countries as Zadaxin. Active trials for long-COVID immune dysregulation and post-sepsis immunosuppression.",
       "tags": [
         "🌍",
         "✅"
@@ -222,7 +223,8 @@
       ],
       "mechanism": "11-amino acid peptide derived from the helix B surface of erythropoietin (EPO). Binds the innate repair receptor (IRR/EPOR-βCR complex) without stimulating red blood cell production. Potently anti-inflammatory and neuroprotective — promotes small fiber nerve regeneration and reduces pain signaling.",
       "dosing": {
-        "SubQ": "4 mg/day for 28 days (diabetic neuropathy trial protocol)",
+        "SubQ (clinical)": "4 mg/day for 28 days (diabetic neuropathy trial protocol)",
+        "SubQ (community)": "1–4 mg/day, or 4 mg 3–4×/week for neuropathic pain; typically 28-day cycles",
         "IV": "2 mg three times weekly for 4 weeks (sarcoidosis trial)",
         "Notes": "No established standard outpatient protocol. Cycle based on indication. No hematopoietic effects — safe for patients sensitive to EPO."
       },
@@ -255,7 +257,7 @@
         "IV": "100 mcg — research settings only (COVID-19 ARDS trials)",
         "Notes": "Intranasal/inhaled preferred for pulmonary and systemic anti-inflammatory effects. Compounded preparations required for nasal use."
       },
-      "side_effects": "Inhaled and intranasal generally well-tolerated. Possible mild nasal irritation. IV may cause transient hypotension. Excellent overall safety profile.",
+      "side_effects": "Inhaled and intranasal generally well-tolerated. Possible mild nasal irritation. IV may cause clinically significant transient hypotension — monitor BP closely. Establish baseline MSH and TGF-β1 before starting Shoemaker CIRS protocol. Excellent overall safety profile when properly screened.",
       "blood_panel": [
         "CBC",
         "CMP",
@@ -280,11 +282,11 @@
       ],
       "mechanism": "Szeto-Schiller tetrapeptide. Selectively targets cardiolipin on the inner mitochondrial membrane, reducing ROS production and restoring electron transport chain efficiency. Prevents mitochondrial permeability transition.",
       "dosing": {
-        "SubQ": "0.05–0.25 mg/kg/day — research dosing only",
-        "IV": "Used in clinical trials; no established outpatient protocol",
-        "Notes": "No standard human self-administration protocol exists. All dosing extrapolated from Phase II elamipretide / MTP-131 trial data."
+        "SubQ (community)": "1–5 mg/day fixed-dose SubQ",
+        "SubQ / IV (clinical)": "4–40 mg/day in trials (MMPOWER, ReCLAIM)",
+        "Notes": "Community standard is fixed-dose, not weight-based. No established human self-administration protocol exists outside of elamipretide / MTP-131 clinical programs."
       },
-      "side_effects": "Generally safe in Phase II trials. Injection site reactions common. Transient hypotension reported with IV administration. Long-term safety profile still being established.",
+      "side_effects": "Generally safe in Phase II/III trials. Injection site reactions common. Transient hypotension reported with IV administration. Long-term safety profile still being established.",
       "blood_panel": [
         "BMP (kidney + electrolytes)",
         "BNP / NT-proBNP (cardiac marker)",
@@ -292,7 +294,7 @@
         "CMP",
         "Serum lactate (mitochondrial proxy)"
       ],
-      "research": "Strong preclinical data. Human trials for heart failure and aging (elamipretide/MTP-131).",
+      "research": "Strong preclinical data. Phase III TAZPOWER trial for Barth syndrome complete; Stealth BioTherapeutics NDA submitted. Ongoing trials in primary mitochondrial myopathy and heart failure.",
       "tags": [
         "🐭"
       ]
@@ -311,8 +313,8 @@
       ],
       "mechanism": "Mitochondrial-derived peptide encoded in 12S rRNA. Activates AMPK, regulates AICAR and folate cycle, improves insulin sensitivity and metabolic flexibility. Increases exercise capacity.",
       "dosing": {
-        "SubQ": "5–10 mg, 2–3×/week",
-        "Notes": "Emerging protocol — no established clinical standard. Often cycled 8 weeks on / 4 weeks off. Best administered in the morning to align with circadian metabolic rhythms."
+        "SubQ": "10 mg 2× weekly (most common community protocol), range 5–10 mg 2–3×/week",
+        "Notes": "Typical cycle 8–12 weeks on / 4 weeks off. Emerging protocol — no established clinical standard. Best administered in the morning to align with circadian metabolic rhythms."
       },
       "side_effects": "Limited human safety data. No significant adverse events in early trials. Injection site reactions possible. Theoretical hypoglycemia risk given AMPK activation — monitor fasting glucose.",
       "blood_panel": [
@@ -343,10 +345,11 @@
       "dosing": {
         "Oral (NMN / NR precursors)": "250–1000 mg/day — increased cellular bioavailability over standard NAD+",
         "Sublingual": "100 mg/day — raises NAD+ 59–76% over 2–6 weeks",
+        "SubQ": "50–100 mg/day — most common peptide-community route; cycled 5 days on / 2 off or 2 weeks on / 1 off",
         "IV": "250–500 mg per session over 2–4 hours — 100% bioavailability; causes flushing",
-        "Notes": "Liposomal or sublingual forms offer better cost-effectiveness than IV for maintenance. IV for acute therapeutic needs."
+        "Notes": "SubQ has become the primary community route for sustained NAD+ elevation. Liposomal or sublingual forms offer better cost-effectiveness than IV for maintenance. IV for acute therapeutic needs."
       },
-      "side_effects": "Oral and sublingual forms well-tolerated. IV administration causes intense flushing, nausea, and chest tightness — rate-dependent and resolves with slower infusion. Long-term safety data limited at high doses.",
+      "side_effects": "Oral and sublingual forms well-tolerated. IV administration causes intense flushing, nausea, chest tightness, muscle tension, and transient anxiety during the push — rate-dependent and resolves with slower infusion. SubQ generally well-tolerated with mild injection site reactions. Long-term safety data limited at high doses.",
       "blood_panel": [
         "Whole blood NAD+ levels (if available)",
         "NAD+/NADH ratio",
@@ -398,8 +401,8 @@
       ],
       "mechanism": "24-amino acid mitochondria-derived peptide encoded in the 12S rRNA region — a mitokine. Acts as a cytoprotective signaling molecule binding FPRL1 and trimeric WSX-1/CNTF-Rα/gp130 receptors. Upregulates Akt/GSK-3β survival pathways, reduces neuronal apoptosis, improves insulin sensitivity, and declines with aging. Natural pair to MOTS-c in mitochondrial peptide signaling.",
       "dosing": {
-        "SubQ": "5–10 mg per week, divided into 2–3 injections",
-        "Notes": "Cycle 2–4 weeks on, 2–4 weeks off. Emerging protocol — no established clinical standard. Best used alongside MOTS-c for full mitochondrial peptide coverage."
+        "SubQ": "3–5 mg 2–3× weekly (HNG or S14G-HN analog — native Humanin not commercially available)",
+        "Notes": "Cycle 2–4 weeks on, 2–4 weeks off. Grey market product is essentially always an HNG analog, not native Humanin. Emerging protocol — no established clinical standard. Best used alongside MOTS-c for full mitochondrial peptide coverage."
       },
       "side_effects": "Minimal human safety data. Animal studies show excellent tolerability across multiple species. No significant adverse events observed in preclinical work.",
       "blood_panel": [
@@ -410,7 +413,7 @@
         "IGF-1",
         "Fasting glucose"
       ],
-      "research": "Extensive preclinical data showing lifespan extension, cardiovascular protection, and neuroprotection in rodent models. HNG analog in development. No human clinical trials as of 2024.",
+      "research": "Extensive preclinical data showing lifespan extension, cardiovascular protection, and neuroprotection in rodent models. HNG analog in development. No human clinical trials as of 2026.",
       "tags": [
         "🐭"
       ]
@@ -426,7 +429,7 @@
       ],
       "mechanism": "29-amino acid analog of GHRH. Stimulates pituitary somatotrophs to release endogenous GH in a pulsatile, physiological manner. Preserves pituitary feedback axis unlike exogenous GH.",
       "dosing": {
-        "SubQ": "200–500 mcg administered before bed",
+        "SubQ": "300 mcg SubQ at bedtime (community standard); range 200–500 mcg",
         "Notes": "GH pulses naturally during sleep — bedtime dosing is optimal. Cycle 3–6 months. Often stacked with Ipamorelin for amplified GH release."
       },
       "side_effects": "Well-tolerated. Common: flushing, headache, dizziness, injection site reactions. May mildly increase cortisol and prolactin. Avoid in active malignancy as GH-axis stimulation could theoretically promote tumor growth.",
@@ -453,10 +456,10 @@
       "mechanism": "Modified GHRH analog with DAC (Drug Affinity Complex) extending half-life to 6–8 days via albumin binding. Provides sustained GH release. Without DAC (Mod GRF 1-29): shorter 30-min pulse.",
       "dosing": {
         "SubQ (with DAC)": "1–2 mg once weekly",
-        "SubQ (without DAC)": "100 mcg per injection, 2–3×/day",
-        "Notes": "Stack with Ipamorelin for synergistic GH pulse. DAC provides sustained bleed-style release; without DAC mimics natural pulsatile GH more closely."
+        "SubQ (without DAC / Mod GRF 1-29)": "100–200 mcg per dose, 2–3× daily (pre-meal and pre-bed)",
+        "Notes": "Stack with Ipamorelin for synergistic GH pulse. DAC provides sustained elevation via albumin binding; without DAC mimics natural pulsatile GH more closely — community increasingly favors no-DAC."
       },
-      "side_effects": "Common: water retention, tingling or numbness in extremities, headache. DAC formulation may cause more persistent glucose elevation. Avoid in active malignancy.",
+      "side_effects": "Common: water retention, tingling or numbness in extremities, headache. DAC formulation produces an elevated IGF-1 bleed over ~1 week rather than physiologic pulses, with more persistent glucose elevation. Avoid in active malignancy.",
       "blood_panel": [
         "IGF-1",
         "GH levels",
@@ -478,7 +481,7 @@
       ],
       "mechanism": "Selective GH secretagogue and ghrelin receptor agonist. Stimulates GH release without significantly raising cortisol or prolactin — cleaner profile than GHRP-2/6. Synergistic with GHRH analogs.",
       "dosing": {
-        "SubQ": "100–300 mcg per injection, 2–3×/day",
+        "SubQ": "200–300 mcg per injection, 2–3× daily",
         "Notes": "Best dosed before bed and post-workout. Do not eat 1–2 hours before injection — food blunts GH response. Stack with CJC-1295 for amplified GH pulse."
       },
       "side_effects": "Cleanest safety profile among GH secretagogues. Common: headache, flushing, mild water retention. Carpal tunnel syndrome possible with prolonged high-dose use. Minimal cortisol or prolactin elevation.",
@@ -493,33 +496,6 @@
       "tags": []
     },
     {
-      "id": "ibutemorelin",
-      "name": "Ibutemorelin",
-      "lane": "recovery",
-      "also_in": [],
-      "badges": [
-        "💉",
-        "🔬",
-        "🔗"
-      ],
-      "mechanism": "Next-generation hexapeptide GHRP and selective ghrelin/GHS-R1a receptor agonist. Stimulates pulsatile GH release with high selectivity and a cleaner side effect profile than older GHRPs (GHRP-2/6). Structurally distinct from ipamorelin with improved receptor binding kinetics. Being developed for adult GH deficiency.",
-      "dosing": {
-        "SubQ": "0.2–1 mg/day (clinical trial dosing)",
-        "Notes": "No established off-label protocol. Often paired with a GHRH analog (CJC-1295, Sermorelin) for synergistic GH pulse amplification."
-      },
-      "side_effects": "Well-tolerated in Phase I trials. Similar profile to ipamorelin: headache, water retention, mild cortisol elevation. Minimal prolactin effect. Cleaner than GHRP-2 or GHRP-6.",
-      "blood_panel": [
-        "IGF-1",
-        "GH levels",
-        "Fasting glucose",
-        "Cortisol",
-        "Prolactin",
-        "CMP"
-      ],
-      "research": "Phase I/II trials for adult GH deficiency. Developed as next-generation GHRP with improved selectivity. Limited published clinical data.",
-      "tags": []
-    },
-    {
       "id": "igf1lr3",
       "name": "IGF-1 LR3",
       "lane": "recovery",
@@ -530,8 +506,8 @@
       ],
       "mechanism": "Long-chain analog of IGF-1 with arginine substitution at position 3, preventing IGF-binding protein binding. 2–3x longer half-life than native IGF-1. Promotes muscle protein synthesis and satellite cell activation.",
       "dosing": {
-        "SubQ / IM": "20–50 mcg/day, administered post-workout",
-        "Notes": "Maximum cycle length 4 weeks due to receptor desensitization. Always have fast-acting glucose available. High misuse potential — not recommended for casual use."
+        "SubQ / IM": "40–50 mcg/day SubQ post-workout, bilateral site rotation (community standard); range 20–50 mcg",
+        "Notes": "Maximum cycle length 4 weeks due to receptor desensitization, followed by 4–6 week off. Always have fast-acting glucose available. High misuse potential — not recommended for casual use."
       },
       "side_effects": "Significant hypoglycemia risk — must carry fast-acting glucose at all times. Risk of acromegaly features with chronic high-dose use. Promotes growth in any existing neoplasms. High misuse potential in bodybuilding. Not intended for general wellness.",
       "blood_panel": [
@@ -559,8 +535,8 @@
       ],
       "mechanism": "Endogenous glycoprotein and potent myostatin/activin inhibitor. The FS-344 splice variant is processed to the serum-stable FS-315 form. Binds and neutralizes myostatin (GDF-8) at the ActRIIB receptor, removing the primary brake on skeletal muscle protein synthesis. Transgenic overexpression produces 194–327% muscle mass increases in mice.",
       "dosing": {
-        "SubQ / IM": "100–200 mcg/day for 10–30 day cycles",
-        "Notes": "Extend off-periods 8–12 weeks minimum between cycles. Only 1–3 cycles per year. Gene therapy approaches under investigation for DMD — vastly different from injectable peptide protocols. BANNED by WADA."
+        "SubQ / IM": "100 mcg/day for 10-day cycles (community standard); range 100–300 mcg/day",
+        "Notes": "8–12 weeks off between cycles, 2–3 cycles per year maximum. Gene therapy approaches under investigation for DMD — vastly different from injectable peptide protocols. BANNED by WADA."
       },
       "side_effects": "Minimal human safety data for injectable form. Activin suppression may reduce FSH/LH — monitor reproductive hormones. Banned by WADA and all major sports organizations. Animal studies show 2+ year tolerability.",
       "blood_panel": [
@@ -603,7 +579,7 @@
         "CMP (liver & kidney)",
         "Lipid panel"
       ],
-      "research": "FDA-approved as Egrifta for HIV-associated lipodystrophy. Phase II trials underway for Alzheimer's disease and cognitive decline. Widely used off-label as a premium GH secretagogue for body composition.",
+      "research": "FDA-approved as Egrifta for HIV-associated lipodystrophy. Phase II Alzheimer's cognitive endpoint data published (Baker et al.) showing mild cognitive benefit in older adults. Widely used off-label as a premium GH secretagogue for body composition.",
       "tags": [
         "🔬"
       ]
@@ -688,7 +664,7 @@
         "SubQ": "4–12 mg once weekly (Phase II trial dosing only)",
         "Notes": "Not FDA-approved. Do not self-administer without medical supervision. Phase III trials ongoing as of 2024."
       },
-      "side_effects": "Phase II: GI side effects similar to semaglutide class, plus glucagon-mediated resting heart rate increase. Thyroid monitoring required. Long-term safety not yet established. Contraindicated with MEN2/thyroid cancer history.",
+      "side_effects": "Phase III (TRIUMPH-4): GI adverse events — nausea 43%, vomiting 21%, diarrhea 33%. Novel dysesthesia signal — 20.9% at 12 mg dose (not seen in Phase II). Glucagon-mediated resting heart rate increase. Discontinuation rates 12–18% at higher doses (some for 'perceived excessive weight loss'). Thyroid monitoring required. Contraindicated with MEN2/thyroid cancer history.",
       "blood_panel": [
         "HbA1c",
         "Fasting glucose",
@@ -698,7 +674,7 @@
         "Amylase / Lipase",
         "Resting heart rate / BP (ongoing)"
       ],
-      "research": "Phase II data: up to 24.2% weight loss at 48 weeks. Phase III trials underway.",
+      "research": "Phase III TRIUMPH-4 readout December 2025: 28.7% weight loss at 12 mg over 68 weeks — highest ever reported in a Phase III obesity trial. Seven additional Phase III readouts expected throughout 2026 (TRIUMPH-1, -2, -3, diabetes, OSA, MASH, CV/renal outcomes). NDA filing anticipated late 2026.",
       "tags": []
     },
     {
@@ -727,7 +703,7 @@
         "Calcitonin",
         "DEXA (body composition)"
       ],
-      "research": "Phase III trials (REDEFINE program). Phase II CagriSema showed 15.6% weight loss monotherapy; NEJM 2025 combination data: up to 22.7% weight loss. Not FDA-approved as of 2024.",
+      "research": "Phase III REDEFINE program. REDEFINE-1 published NEJM 2025: CagriSema (cagrilintide + semaglutide) achieved 22.7% weight loss at 68 weeks. NDA submission anticipated. Phase II CagriSema showed 15.6% weight loss with cagrilintide monotherapy.",
       "tags": []
     },
     {
@@ -737,14 +713,16 @@
       "also_in": [],
       "badges": [
         "💉",
-        "🔬"
+        "✅",
+        "🌍"
       ],
-      "mechanism": "GLP-1R / glucagon receptor dual agonist developed by Innovent Biologics. GLP-1 component drives appetite suppression and glycemic control; glucagon component adds hepatic fat oxidation and thermogenesis. Distinct molecular design from retatrutide with comparable dual-agonist mechanism.",
+      "mechanism": "GLP-1R / glucagon receptor dual agonist developed by Innovent Biologics (licensed from Eli Lilly). GLP-1 component drives appetite suppression and glycemic control; glucagon component adds hepatic fat oxidation and thermogenesis. Distinct molecular design from retatrutide with comparable dual-agonist mechanism.",
       "dosing": {
-        "SubQ": "2 mg once weekly, titrating to 4–6 mg over 12 weeks",
-        "Notes": "Maximum studied: 16 mg in Phase I. Phase II/III uses 4–6 mg. Dose-dependent GI tolerance — slow escalation required. Not available outside China clinical trials."
+        "SubQ (approved)": "4 mg or 6 mg once weekly (NMPA-approved doses, titrated from 2 mg over 12 weeks)",
+        "SubQ (under review)": "9 mg once weekly (GLORY-2 Phase III, NDA filed with NMPA)",
+        "Notes": "Phase I max studied: 16 mg. Dose-dependent GI tolerance — slow escalation required. Approved in China only; not available in US, EU, or UK."
       },
-      "side_effects": "GI adverse events typical of GLP-1/glucagon class: nausea, vomiting, decreased appetite — mostly transient. Phase II beneficially improved cardiometabolic markers. Thyroid monitoring recommended for glucagon agonism class.",
+      "side_effects": "GI adverse events typical of GLP-1/glucagon class: nausea, vomiting, decreased appetite — mostly transient. Phase III beneficially improved cardiometabolic markers. Thyroid monitoring recommended for glucagon agonism class. Favorable safety profile in Chinese Phase III trials with no new safety signals at 9 mg.",
       "blood_panel": [
         "HbA1c",
         "Fasting glucose",
@@ -755,8 +733,11 @@
         "Amylase / Lipase",
         "DEXA (body composition)"
       ],
-      "research": "Phase II shows -11% to -14% weight loss at 4–6 mg weekly. Phase III initiated. Not FDA-approved — China clinical trials only as of 2024.",
-      "tags": []
+      "research": "NMPA-approved in China June 2025 (as Xinermei) for chronic weight management — world's first dual GCG/GLP-1 agonist approved for weight loss. Second NMPA approval September 2025 for T2D glycemic control. GLORY-2 Phase III (9 mg dose) met primary endpoints November 2025: 18.55% weight loss at 60 weeks (20.08% in non-diabetic subgroup). Not FDA- or EMA-approved.",
+      "tags": [
+        "🌍",
+        "✅"
+      ]
     },
     {
       "id": "aod9604",
@@ -781,7 +762,7 @@
         "IGF-1 (confirm no hGH-like elevation)",
         "CMP"
       ],
-      "research": "Phase IIb trials for obesity (2000s). TGA-approved. FDA trials discontinued. Off-label use continues.",
+      "research": "Phase IIb trials for obesity (2000s) failed primary weight-loss endpoints. TGA-approved in Australia as a food additive only, not as a drug. FDA trials discontinued. Off-label use continues despite weaker-than-marketed efficacy data.",
       "tags": [
         "🌍"
       ]
@@ -797,8 +778,8 @@
       ],
       "mechanism": "Selective small molecule inhibitor of NNMT (nicotinamide N-methyltransferase), an enzyme overexpressed in obese adipose tissue that depletes NAD+ and methyl donors. Blocking NNMT raises intracellular NAD+ and SAM levels, reactivates brown adipose thermogenesis, reduces adipogenesis, and accelerates fat oxidation — without reducing food intake.",
       "dosing": {
-        "Oral": "50–100 mg/day in divided doses (e.g., 25–50 mg twice daily)",
-        "SubQ": "150–500 mcg/day (injectable research form — start low)",
+        "Oral": "50–100 mg/day in divided doses (e.g., 25–50 mg twice daily) — primary community route",
+        "SubQ": "150–500 mcg/day (experimental injectable form, rarely used — oral is overwhelmingly preferred)",
         "Notes": "Cycle 4–6 weeks on, 2–4 weeks off based on animal data. No established human clinical protocol."
       },
       "side_effects": "Limited human safety data. Animal studies well-tolerated. Potential mild GI effects at high doses. Methylation pathway modulation — monitor homocysteine with extended use.",
@@ -828,7 +809,7 @@
       ],
       "mechanism": "Synthetic ACTH(4-7) analog with Pro-Gly-Pro extension. Increases BDNF, NGF, and VEGF in the brain. Enhances dopaminergic and serotonergic transmission. Neuroprotective via antioxidant and anti-apoptotic pathways.",
       "dosing": {
-        "Intranasal": "200–900 mcg/day — 1–3 drops per nostril, administered 2× daily",
+        "Intranasal": "300 mcg/day typical (community standard); range 200–900 mcg/day. 0.1% concentration = 3 drops delivering ~250–300 mcg, administered 2× daily",
         "SubQ": "100–300 mcg/day for systemic effect",
         "Notes": "Cycle 2 weeks on / 2 weeks off. Higher doses may cause overstimulation or anxiety."
       },
@@ -857,7 +838,7 @@
       ],
       "mechanism": "Angiotensin IV analog. Binds HGF/c-Met receptor system to promote synaptogenesis and dendritic spine formation. 7 orders of magnitude more potent than BDNF in some assays. Potential Alzheimer's research compound.",
       "dosing": {
-        "Oral": "10–30 mg/day — start at 5 mg due to extreme potency",
+        "Oral": "2–10 mg/day — start at 2–5 mg due to extreme potency",
         "Intranasal": "1–5 mg/day",
         "Notes": "Very long half-life — do not dose daily until individual response is established. No validated safe human protocol exists. Use only with medical oversight."
       },
@@ -941,7 +922,7 @@
       ],
       "mechanism": "Delta sleep-inducing peptide. Nonapeptide that modulates delta-wave sleep, reduces ACTH/cortisol, and has antioxidant properties. May normalize disrupted sleep architecture.",
       "dosing": {
-        "SubQ": "100–200 mcg administered before bed",
+        "SubQ": "100–500 mcg SubQ 30–60 minutes pre-bed",
         "Notes": "Short courses of 5–7 days. Effects may persist for weeks post-dosing. Do not combine with sedatives without medical guidance."
       },
       "side_effects": "Limited safety data from 1970s–90s European studies. Paradoxical alertness reported in some users. Variable bioavailability between individuals. Mechanism not fully elucidated — use cautiously.",
@@ -1091,7 +1072,8 @@
       "mechanism": "Afamelanotide — synthetic α-MSH analog. Selectively binds MC1R on melanocytes to stimulate eumelanin synthesis, producing a tan and enhancing photoprotection without UV exposure. Also activates DNA repair pathways in keratinocytes and modulates inflammatory responses in skin.",
       "dosing": {
         "SubQ Implant": "16 mg biodegradable implant every 2 months (FDA-approved Scenesse for EPP)",
-        "Notes": "Off-label injectable protocols (0.5–1 mg SubQ) differ from the approved implant formulation and lack the same safety data. Approved use is exclusively for erythropoietic protoporphyria photoprotection."
+        "SubQ (off-label)": "0.5–1 mg SubQ daily during loading, then 1 mg 1–2×/week maintenance",
+        "Notes": "Off-label injectable protocols differ from the approved implant formulation and lack the same safety data. Approved use is exclusively for erythropoietic protoporphyria photoprotection."
       },
       "side_effects": "Common (>10%): nausea, headache, dizziness, fatigue within 72 hours of administration. Darkening of existing nevi (moles) — baseline dermatological exam recommended. Generally mild overall profile. Well-characterized in EPP clinical trials.",
       "blood_panel": [
@@ -1138,9 +1120,10 @@
       ],
       "mechanism": "Non-selective melanocortin agonist (MC1R, MC3R, MC4R, MC5R). MC4R activation in the hypothalamus drives potent sexual arousal and spontaneous erections independent of stimulation. MC1R drives eumelanin synthesis (tanning). More potent and less selective than Melanotan I or PT-141, producing both effects simultaneously.",
       "dosing": {
-        "SubQ": "0.025 mg/kg (loading), then 0.5–1 mg maintenance as needed",
+        "SubQ (Loading)": "250–500 mcg daily × 7–10 days (start at 100–250 mcg to assess tolerance)",
+        "SubQ (Maintenance)": "500 mcg–1 mg 1–2× weekly as needed",
         "Intranasal": "0.5–2 mg per use (lower bioavailability)",
-        "Notes": "Start very low (0.1 mg) to assess tolerance — very potent. 5–7 day daily loading phase, then maintenance dosing. Not FDA-approved. Exercise caution with existing moles/nevi."
+        "Notes": "Very potent — start very low to assess tolerance. Not FDA-approved. Exercise caution with existing moles/nevi."
       },
       "side_effects": "Frequent and significant: nausea (very common, often dose-limiting), flushing, spontaneous erections, yawning/stretching syndrome, facial flushing. Darkening and stimulation of melanocytic nevi — dermatological monitoring essential. Not FDA-approved. Unlicensed preparations carry unknown purity risk.",
       "blood_panel": [
@@ -1166,9 +1149,10 @@
       ],
       "mechanism": "Bremelanotide — melanocortin receptor agonist (MC3R/MC4R). Acts centrally in the hypothalamus to increase sexual desire and arousal. Unlike PDE5 inhibitors, works on CNS not vasculature.",
       "dosing": {
-        "SubQ": "1.75 mg administered 45 minutes before activity (FDA-approved dose for women)",
+        "SubQ (FDA-approved)": "1.75 mg administered 45 minutes before activity (Vyleesi dose for women)",
+        "SubQ (off-label)": "1–2 mg SubQ 45 min pre-activity",
         "Intranasal": "0.5–1 mg per use (off-label, lower bioavailability than SubQ)",
-        "Notes": "Off-label: 0.5–2 mg SubQ. Do not use more than once per 24 hours or more than 8 times per month. Avoid in cardiovascular disease."
+        "Notes": "Do not use more than once per 24 hours or more than 8 times per month. Avoid in cardiovascular disease."
       },
       "side_effects": "Significant adverse effects: nausea reported in ~40% of clinical trial participants, flushing, headache. Transient but meaningful blood pressure elevation — clinically significant in some individuals. Avoid in cardiovascular disease. Hyperpigmentation with repeated use.",
       "blood_panel": [
@@ -1246,19 +1230,9 @@
       "note": "Gold standard GH stack — GHRH + GHRP for amplified pulsatile GH release"
     },
     {
-      "from": "cjc1295",
-      "to": "ibutemorelin",
-      "note": "GHRH + next-gen GHRP for synergistic pulsatile GH release"
-    },
-    {
       "from": "sermorelin",
       "to": "cjc1295",
       "note": "Both GHRH analogs — not typically combined, but share mechanism"
-    },
-    {
-      "from": "sermorelin",
-      "to": "ibutemorelin",
-      "note": "GHRH + GHRP pairing for amplified physiological GH release"
     },
     {
       "from": "igf1lr3",
