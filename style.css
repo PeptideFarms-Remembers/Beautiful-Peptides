@@ -16,40 +16,115 @@ body {
 }
 
 /* ══════════════════════════════════════
-   HEADER — solid delineated banner strip
+   HEADER
 ══════════════════════════════════════ */
 .site-header {
   flex-shrink: 0;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0 2rem;
+  justify-content: space-between;
+  padding: 0 2.2rem;
   height: 72px;
-  background: #12141f;
-  border-bottom: 3px solid #2a2d45;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  background: linear-gradient(175deg, #181b30 0%, #0d0f1e 100%);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+  z-index: 100;
 }
 
-.header-logo {
-  font-size: 2rem;
-  line-height: 1;
+/* Gradient accent rule along the bottom of the header */
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    #5058c0 0%,
+    #8048c8 28%,
+    #4888b8 55%,
+    #38a898 80%,
+    #5058c0 100%);
+  opacity: 0.75;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Vertical color bar — visual anchor for the brand */
+.header-accent-bar {
+  width: 4px;
+  height: 38px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #7888e8 0%, #a858d8 100%);
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(168, 88, 216, 0.5);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .header-text h1 {
   font-size: 1.5rem;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  line-height: 1;
 }
 
 .subtitle {
-  font-size: 0.78rem;
-  color: #5a5f7a;
-  margin-top: 0.1rem;
+  font-size: 0.7rem;
+  color: #8890b8;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* Suggest a Peptide button — top right */
+.header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #7888b8;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 7px 18px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.header-action-btn:hover {
+  color: #b0bce8;
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.22);
+}
+
+/* Hint note — absolute, bottom-center of header */
+.header-hint-note {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #4a5278;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* ══════════════════════════════════════
-   CHART WRAPPER — fills all space between header & footer
+   CHART WRAPPER
 ══════════════════════════════════════ */
 .chart-wrapper {
   flex: 1;
@@ -58,13 +133,10 @@ body {
   padding: 0;
 }
 
-/* SVG overlay — covers entire chart area */
 #link-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 10;
   overflow: visible;
@@ -72,7 +144,7 @@ body {
 }
 
 /* ══════════════════════════════════════
-   SWIMLANE GRID — flush, no gaps, no padding
+   SWIMLANE GRID
 ══════════════════════════════════════ */
 .swimlane-grid {
   display: flex;
@@ -84,23 +156,22 @@ body {
 }
 
 /* ══════════════════════════════════════
-   LANE — full-height solid color strip, NO rounding
+   LANE
 ══════════════════════════════════════ */
 .lane {
   flex: 0 0 10vw;
   width: 10vw;
   display: flex;
   flex-direction: column;
-  border-right: 2px solid rgba(0,0,0,0.35);
+  border-right: 2px solid rgba(0,0,0,0.4);
   border-radius: 0;
-  overflow: hidden;
+  overflow: visible;
+  transition: filter 0.2s;
 }
 
-.lane:last-child {
-  border-right: none;
-}
+.lane:last-child { border-right: none; }
 
-/* ── Lane header — fixed height, same across all lanes ── */
+/* Lane header highlight when cross-linked */
 .lane-header {
   flex-shrink: 0;
   height: 64px;
@@ -111,16 +182,19 @@ body {
   gap: 3px;
   padding: 0 4px;
   border-bottom: 2px solid rgba(0,0,0,0.3);
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.12);
+  transition: background 0.25s, box-shadow 0.25s;
 }
 
-.lane-emoji {
-  font-size: 1.1rem;
-  line-height: 1;
+.lane-header.state-cross-target {
+  background: rgba(80,180,255,0.22) !important;
+  box-shadow: inset 0 0 0 2px #50b4ff, 0 0 14px rgba(80,180,255,0.5);
 }
+
+.lane-emoji { font-size: 1.1rem; line-height: 1; }
 
 .lane-title {
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -131,58 +205,104 @@ body {
   hyphens: auto;
 }
 
-/* ── Lane body — evenly spaces bubbles ── */
 .lane-body {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 8px 4px;
+  padding: 8px 4px 22px;
+  background: rgba(0, 0, 0, 0.28);
 }
 
 /* ══════════════════════════════════════
-   PEPTIDE BUBBLE
+   PEPTIDE NODE
 ══════════════════════════════════════ */
 .peptide-node {
-  width: 90%;
-  padding: 5px 4px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.30);
-  border: 1.5px solid rgba(255,255,255,0.20);
-  color: rgba(255,255,255,0.90);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
+  width: 92%;
+  padding: 8px 9px 28px 11px;
+  border-radius: 4px;
+  background: linear-gradient(160deg, rgba(34, 38, 62, 0.98) 0%, rgba(20, 23, 40, 0.98) 100%);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-left: 4px solid rgba(255,255,255,0.25); /* tinted per-lane in JS */
+  color: rgba(255,255,255,0.92);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
   cursor: pointer;
   user-select: none;
   position: relative;
   z-index: 20;
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s, opacity 0.15s;
+  overflow: visible;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.45),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Text label inside node — handles overflow/ellipsis */
+.node-label {
+  display: block;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Hovered node — bright white glow */
+/* Badge circles — positioned on the bottom edge, 50% in / 50% out */
+.node-badges {
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.node-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  /* radial gradient creates a convex orb/sphere illusion */
+  background: radial-gradient(circle at 36% 32%, #5a3e82, #1e0f36);
+  border: 1.5px solid rgba(160, 110, 230, 0.75);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  box-shadow:
+    inset 0 1.5px 0 rgba(220, 180, 255, 0.35),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.45),
+    0 5px 12px rgba(0, 0, 0, 0.75),
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
 .peptide-node.state-hovered {
-  background: rgba(255,255,255,0.95) !important;
+  background: rgba(255,255,255,0.96) !important;
   border-color: #ffffff !important;
+  border-left-width: 3px !important;
   color: #0a0c12 !important;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.6) !important;
-  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3), 0 6px 24px rgba(255,255,255,0.35) !important;
+  transform: scale(1.06);
 }
 
-/* Connected node — blue synergy glow */
 .peptide-node.state-connected {
-  background: rgba(80,180,255,0.25) !important;
+  background: rgba(80,180,255,0.18) !important;
   border-color: #50b4ff !important;
+  border-left-width: 3px !important;
   color: #c8eaff !important;
-  box-shadow: 0 0 0 2px rgba(80,180,255,0.3), 0 0 12px rgba(80,180,255,0.4) !important;
-  transform: scale(1.04);
+  box-shadow: 0 0 0 1px rgba(80,180,255,0.25), 0 4px 16px rgba(80,180,255,0.3) !important;
+  transform: scale(1.03);
 }
 
-/* Dimmed — unrelated nodes fade out */
 .peptide-node.state-dimmed {
-  opacity: 0.18 !important;
+  opacity: 0.15 !important;
   transform: scale(0.96);
 }
 
@@ -191,8 +311,8 @@ body {
 ══════════════════════════════════════ */
 .synergy-line {
   fill: none;
-  stroke: rgba(255,255,255,0.15);
-  stroke-width: 1.5;
+  stroke: rgba(255,255,255,0.32);
+  stroke-width: 2;
   stroke-dasharray: 6 5;
 }
 
@@ -204,53 +324,286 @@ body {
 }
 
 .synergy-line.state-dimmed {
-  stroke: rgba(255,255,255,0.03);
+  stroke: rgba(255,255,255,0.02);
+}
+
+/* Cross-lane lines (node → lane header) */
+.cross-lane-line {
+  fill: none;
+  stroke: rgba(255,255,255,0.22);
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.cross-lane-line.state-highlighted {
+  stroke: #a78bfa;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 5px rgba(167,139,250,0.9));
+}
+
+.cross-lane-line.state-dimmed {
+  stroke: rgba(255,255,255,0.01);
 }
 
 /* ══════════════════════════════════════
-   FOOTER — solid delineated banner strip
+   TOOLTIP PANEL
+══════════════════════════════════════ */
+.tooltip-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.45);
+}
+
+.tooltip-backdrop.active { display: block; }
+
+.tooltip-panel {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 300;
+  width: min(680px, 92vw);
+  max-height: 82vh;
+  overflow-y: auto;
+  background: #16192a;
+  border: 1.5px solid #2a2d45;
+  border-radius: 12px;
+  padding: 1.4rem 1.8rem 1.8rem;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.12) transparent;
+}
+
+/* Webkit scrollbar */
+.tooltip-panel::-webkit-scrollbar {
+  width: 4px;
+}
+.tooltip-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tooltip-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+}
+.tooltip-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.tooltip-panel.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.tooltip-top-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-suggest-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.63rem;
+  font-weight: 600;
+  color: #6070a0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px;
+  padding: 4px 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tooltip-suggest-btn:hover {
+  color: #a0b4e0;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.tooltip-close {
+  background: none;
+  border: none;
+  color: #5a5f7a;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.tooltip-close:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+.tooltip-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #2a2d45;
+}
+
+.tooltip-badges {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.1em;
+}
+
+.tooltip-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.tooltip-lane-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+}
+
+.tooltip-section {
+  margin-bottom: 0.9rem;
+}
+
+.tooltip-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5a5f7a;
+  margin-bottom: 0.35rem;
+}
+
+.tooltip-body {
+  font-size: 0.82rem;
+  color: #b0b5cc;
+  line-height: 1.6;
+}
+
+/* Dosing rows */
+.dosing-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 6px;
+  margin-bottom: 5px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.dosing-route {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6888c0;
+  padding-top: 2px;
+}
+
+.dosing-desc {
+  color: #b0b5cc;
+}
+
+.dosing-notes {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-left: 2px solid rgba(255,255,255,0.1);
+  font-size: 0.78rem;
+  color: #7a80a0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Blood panel tags */
+.blood-tag {
+  display: inline-block;
+  background: rgba(180, 60, 60, 0.12);
+  border: 1px solid rgba(200, 80, 80, 0.28);
+  color: #e08888;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 2px 4px 2px 0;
+}
+
+.tooltip-synergy-chip {
+  display: inline-block;
+  background: rgba(80,180,255,0.15);
+  border: 1px solid rgba(80,180,255,0.3);
+  color: #90d0ff;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin: 2px 3px 2px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tooltip-synergy-chip:hover { background: rgba(80,180,255,0.3); }
+
+/* ══════════════════════════════════════
+   FOOTER
 ══════════════════════════════════════ */
 .site-footer {
   flex-shrink: 0;
   background: #12141f;
   border-top: 3px solid #2a2d45;
-  padding: 10px 2rem 12px;
+  padding: 8px 2rem 10px;
   box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
+  z-index: 100;
+  text-align: center;
 }
 
 .footer-title {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #5a5f7a;
-  margin-bottom: 6px;
+  color: #8085a0;
+  margin-bottom: 5px;
 }
 
 .badge-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
+  justify-content: center;
+  gap: 3px 14px;
   align-items: center;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.72rem;
+  gap: 4px;
+  font-size: 0.68rem;
   color: #7a7f9a;
   white-space: nowrap;
 }
 
-.legend-item span {
-  font-size: 0.88rem;
-  line-height: 1;
-}
+.legend-item span { font-size: 0.82rem; line-height: 1; }
 
 .footer-note {
-  margin-top: 6px;
-  font-size: 0.62rem;
+  margin-top: 5px;
+  font-size: 0.6rem;
   color: #2a2f45;
   font-style: italic;
 }

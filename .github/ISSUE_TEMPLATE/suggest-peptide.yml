@@ -1,0 +1,190 @@
+name: Suggest a Peptide
+description: Propose a new peptide to be added to the Beautiful Peptides reference map.
+title: "[Peptide Suggestion] "
+labels: ["peptide-suggestion", "community"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Suggest a Peptide
+        Thank you for contributing to the Beautiful Peptides map! Fill out all required fields as completely as possible.
+        Submissions with solid sourcing and complete data will be reviewed and merged.
+        > **Note:** Only suggest compounds the peptide community actively discusses or uses. Please include at least one credible source.
+
+  # ── IDENTITY ─────────────────────────────────────────────────────────────────
+
+  - type: input
+    id: peptide-name
+    attributes:
+      label: Peptide Name
+      description: Full, commonly used name as it should appear on the card.
+      placeholder: e.g. BPC-157
+    validations:
+      required: true
+
+  - type: input
+    id: aliases
+    attributes:
+      label: Common Aliases / Trade Names
+      description: Other names, abbreviations, or brand names this compound is known by.
+      placeholder: e.g. Body Protection Compound 157, PL 14736
+    validations:
+      required: false
+
+  # ── CATEGORY ROUTING ──────────────────────────────────────────────────────────
+
+  - type: dropdown
+    id: primary-lane
+    attributes:
+      label: Primary Category (Lane)
+      description: Which lane best represents how the peptide community primarily uses this compound? Choose the most dominant use case, not the most interesting one.
+      options:
+        - Repair & Inflammation
+        - Energy & Mitochondria
+        - Recovery & Growth
+        - Metabolism & Fat Loss
+        - Cognitive & Focus
+        - Stress & Anxiety
+        - Sleep
+        - Longevity
+        - Beauty & Skin
+        - Sexual Health
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: secondary-lanes
+    attributes:
+      label: Secondary Categories (Cross-Lane Links)
+      description: Select any lanes this peptide has notable secondary effects in. These become the dashed connector lines on the map.
+      options:
+        - label: "Repair & Inflammation"
+        - label: "Energy & Mitochondria"
+        - label: "Recovery & Growth"
+        - label: "Metabolism & Fat Loss"
+        - label: "Cognitive & Focus"
+        - label: "Stress & Anxiety"
+        - label: "Sleep"
+        - label: "Longevity"
+        - label: "Beauty & Skin"
+        - label: "Sexual Health"
+
+  - type: textarea
+    id: cross-lane-reason
+    attributes:
+      label: Cross-Lane Reasoning
+      description: For each secondary category you selected above, briefly explain why. One line per cross-link.
+      placeholder: |
+        Longevity — activates sirtuin pathway and supports telomere maintenance
+        Beauty & Skin — IV form widely used for skin brightening in aesthetics community
+    validations:
+      required: false
+
+  # ── BADGES ───────────────────────────────────────────────────────────────────
+
+  - type: checkboxes
+    id: badges
+    attributes:
+      label: Applicable Badges
+      description: Select all that apply. A maximum of 5 will be shown on the card — maintainers will prioritize if more are selected.
+      options:
+        - label: "🧬 Naturally occurring (endogenous or derived from natural sources)"
+        - label: "✅ FDA Approved (for any indication)"
+        - label: "🌍 Approved internationally (non-US approval)"
+        - label: "🐭 Animal studies only (no published human trials)"
+        - label: "💊 Oral bioavailable"
+        - label: "💉 Injectable (SubQ / IM)"
+        - label: "👃 Intranasal administration available"
+        - label: "⚠️ Significant safety concerns or contraindications"
+        - label: "🔗 Commonly used as a stack partner"
+        - label: "🧩 Researched for specific disorders or conditions"
+        - label: "❤️‍🩹 Cardiovascular research"
+        - label: "🔬 Active clinical trials"
+
+  # ── CONTENT FIELDS ───────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: Mechanism of Action
+      description: How does this peptide work? Describe receptor targets, signaling pathways, or key biological effects in 2–4 sentences.
+      placeholder: e.g. Synthetic pentadecapeptide that upregulates GH receptors, promotes angiogenesis via VEGF, and modulates nitric oxide synthesis...
+    validations:
+      required: true
+
+  - type: textarea
+    id: dosing
+    attributes:
+      label: Dosing Protocol
+      description: |
+        List each administration route on its own line using the format below.
+        Include a "Notes:" line for cycling guidance, timing, or stacking tips.
+      placeholder: |
+        SubQ / IM: 250–500 mcg/day injected near the target site
+        Oral: 500 mcg–1 mg/day for gut-specific use
+        Intranasal: 100–200 mcg per nostril, 1–2x daily
+        Notes: Cycle 4–6 weeks on, 2 weeks off.
+    validations:
+      required: true
+
+  - type: textarea
+    id: side-effects
+    attributes:
+      label: Side Effects & Safety
+      description: Known adverse effects, who should avoid it, contraindications, and any serious safety flags. Be specific — vague "consult a doctor" responses will be rejected.
+      placeholder: e.g. Fluid retention, joint pain, and transient glucose elevation possible. Contraindicated with active malignancy. Monitor IGF-1 to avoid supraphysiologic levels...
+    validations:
+      required: true
+
+  - type: textarea
+    id: blood-panel
+    attributes:
+      label: Blood Panel to Monitor
+      description: Lab markers that should be tracked when using this compound. One per line.
+      placeholder: |
+        IGF-1
+        CBC
+        CMP (liver enzymes)
+        Fasting glucose / HbA1c
+        Testosterone / LH / FSH (if hormonal)
+    validations:
+      required: false
+
+  - type: textarea
+    id: research
+    attributes:
+      label: Research Status
+      description: Summarize the current state of research — human trials, animal data, approvals, or trial phase.
+      placeholder: e.g. FDA-approved for X indication. Phase II trials ongoing for Y. Primarily rodent data for Z effect. No published human trials.
+    validations:
+      required: true
+
+  # ── CONNECTIONS ───────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: synergies
+    attributes:
+      label: Synergy Partners
+      description: |
+        Which peptides already on the map does this compound synergize with?
+        Use the exact peptide names as shown on the map. One per line.
+        Current peptides: BPC-157, TB-500, GHK-Cu, KPV, Thymosin α1, ARA-290, VIP, SS-31, MOTS-c, NAD+, SLU-PP-332, Humanin, Sermorelin, CJC-1295, Ipamorelin, Ibutemorelin, Tesamorelin, IGF-1 LR3, Follistatin 344, Semaglutide, Tirzepatide, Retatrutide, Cagrilintide, Mazdutide, AOD-9604, 5-Amino-1MQ, Semax, Dihexa, Selank, Oxytocin, DSIP, Epitalon, Pinealon, Thymalin, Glutathione, Melanotan I, SNAP-8, Melanotan II, PT-141, Kisspeptin
+      placeholder: |
+        BPC-157 — both promote gut healing and tissue repair
+        TB-500 — complementary repair mechanisms for injury recovery
+    validations:
+      required: false
+
+  # ── SOURCES ───────────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: References & Sources
+      description: Link to PubMed studies, ClinicalTrials.gov registrations, or peer-reviewed sources. One per line. At least one source is required.
+      placeholder: |
+        https://pubmed.ncbi.nlm.nih.gov/XXXXXXXX
+        https://clinicaltrials.gov/study/NCTXXXXXXXX
+    validations:
+      required: true

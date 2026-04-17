@@ -10,113 +10,65 @@
 
   <!-- ══ HEADER BANNER ══ -->
   <header class="site-header">
-    <span class="header-logo">🧬</span>
-    <div class="header-text">
-      <h1>Beautiful Peptides</h1>
-      <p class="subtitle">An interactive reference map of peptide categories, synergies &amp; research</p>
+    <div class="header-brand">
+      <div class="header-accent-bar"></div>
+      <div class="header-text">
+        <h1>Beautiful Peptides</h1>
+        <p class="subtitle">An interactive reference map of peptide categories, synergies &amp; research</p>
+      </div>
     </div>
+    <!-- Update href to your GitHub repo issues URL once hosted -->
+    <a class="header-action-btn" href="https://github.com/PeptideFarms-Remembers/Beautiful-Peptides/issues/new?template=suggest-peptide.yml" target="_blank" rel="noopener">&#43; Suggest a Peptide</a>
+    <span class="header-hint-note">&#9654; Click any peptide card for details</span>
   </header>
 
   <!-- ══ CHART ══ -->
   <div class="chart-wrapper" id="chart-wrapper">
     <svg id="link-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="swimlane-grid" id="swimlane-grid"></div>
+  </div>
 
-    <div class="swimlane-grid" id="swimlane-grid">
-
-      <div class="lane" id="lane-repair" data-color="#c0522a">
-        <div class="lane-header"><div class="lane-emoji">🩹</div><div class="lane-title">Repair &amp;<br>Inflammation</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-bpc157">BPC-157</div>
-          <div class="peptide-node" id="node-tb500">TB-500</div>
-          <div class="peptide-node" id="node-ghkcu">GHK-Cu</div>
-          <div class="peptide-node" id="node-kpv">KPV</div>
-          <div class="peptide-node" id="node-ta1">Thymosin α1</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-energy" data-color="#1a6aaa">
-        <div class="lane-header"><div class="lane-emoji">⚡</div><div class="lane-title">Energy &amp;<br>Mitochondria</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-ss31">SS-31</div>
-          <div class="peptide-node" id="node-motsc">MOTS-c</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-recovery" data-color="#2a7a2a">
-        <div class="lane-header"><div class="lane-emoji">💪</div><div class="lane-title">Recovery &amp;<br>Growth</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-sermorelin">Sermorelin</div>
-          <div class="peptide-node" id="node-cjc1295">CJC-1295</div>
-          <div class="peptide-node" id="node-ipamorelin">Ipamorelin</div>
-          <div class="peptide-node" id="node-tesamorelin">Tesamorelin</div>
-          <div class="peptide-node" id="node-igf1lr3">IGF-1 LR3</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-metabolism" data-color="#7a2a9a">
-        <div class="lane-header"><div class="lane-emoji">🔥</div><div class="lane-title">Metabolism &amp;<br>Fat Loss</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-semaglutide">Semaglutide</div>
-          <div class="peptide-node" id="node-tirzepatide">Tirzepatide</div>
-          <div class="peptide-node" id="node-retatrutide">Retatrutide</div>
-          <div class="peptide-node" id="node-aod9604">AOD-9604</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-cognitive" data-color="#8a6a00">
-        <div class="lane-header"><div class="lane-emoji">🧠</div><div class="lane-title">Cognitive &amp;<br>Focus</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-semax">Semax</div>
-          <div class="peptide-node" id="node-dihexa">Dihexa</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-stress" data-color="#9a4a10">
-        <div class="lane-header"><div class="lane-emoji">😌</div><div class="lane-title">Stress &amp;<br>Anxiety</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-selank">Selank</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-sleep" data-color="#1a3a7a">
-        <div class="lane-header"><div class="lane-emoji">🌙</div><div class="lane-title">Sleep</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-epitalon">Epitalon</div>
-          <div class="peptide-node" id="node-pinealon">Pinealon</div>
-          <div class="peptide-node" id="node-dsip">DSIP</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-longevity" data-color="#0a6a4a">
-        <div class="lane-header"><div class="lane-emoji">⏳</div><div class="lane-title">Longevity</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-epitalon-l">Epitalon</div>
-          <div class="peptide-node" id="node-motsc-l">MOTS-c</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-beauty" data-color="#9a2a4a">
-        <div class="lane-header"><div class="lane-emoji">✨</div><div class="lane-title">Beauty &amp;<br>Skin</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-ghkcu-b">GHK-Cu</div>
-          <div class="peptide-node" id="node-bpc157-b">BPC-157</div>
-        </div>
-      </div>
-
-      <div class="lane" id="lane-sexual" data-color="#6a1a7a">
-        <div class="lane-header"><div class="lane-emoji">❤️</div><div class="lane-title">Sexual<br>Health</div></div>
-        <div class="lane-body">
-          <div class="peptide-node" id="node-pt141">PT-141</div>
-          <div class="peptide-node" id="node-kisspeptin">Kisspeptin</div>
-        </div>
-      </div>
-
+  <!-- ══ TOOLTIP PANEL ══ -->
+  <div class="tooltip-panel" id="tooltip-panel" aria-hidden="true">
+    <div class="tooltip-top-actions">
+      <a class="tooltip-suggest-btn" id="suggest-edit-btn" href="#" target="_blank" rel="noopener">&#9998; Suggest Edit</a>
+      <button class="tooltip-close" id="tooltip-close" aria-label="Close">✕</button>
+    </div>
+    <div class="tooltip-header">
+      <span class="tooltip-badges" id="tooltip-badges"></span>
+      <h2 class="tooltip-name" id="tooltip-name"></h2>
+      <span class="tooltip-lane-tag" id="tooltip-lane-tag"></span>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">⚙️ Mechanism</div>
+      <div class="tooltip-body" id="tooltip-mechanism"></div>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">💉 Dosing Protocol</div>
+      <div class="tooltip-body" id="tooltip-dosing"></div>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">⚠️ Side Effects &amp; Safety</div>
+      <div class="tooltip-body" id="tooltip-side-effects"></div>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">🩸 Blood Panel to Monitor</div>
+      <div class="tooltip-body" id="tooltip-blood-panel"></div>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">🔬 Research Status</div>
+      <div class="tooltip-body" id="tooltip-research"></div>
+    </div>
+    <div class="tooltip-section">
+      <div class="tooltip-label">🔗 Synergy Partners</div>
+      <div class="tooltip-body" id="tooltip-synergies"></div>
     </div>
   </div>
+  <div class="tooltip-backdrop" id="tooltip-backdrop"></div>
 
   <!-- ══ FOOTER LEGEND ══ -->
   <footer class="site-footer">
-    <div class="footer-title">BADGE LEGEND</div>
+    <div class="footer-title">Badge Legend</div>
     <div class="badge-legend">
       <div class="legend-item"><span>🧬</span> Naturally occurring</div>
       <div class="legend-item"><span>✅</span> FDA Approved</div>
@@ -127,11 +79,11 @@
       <div class="legend-item"><span>👃</span> Intranasal</div>
       <div class="legend-item"><span>⚠️</span> Safety concerns</div>
       <div class="legend-item"><span>🔗</span> Common stack partner</div>
-      <div class="legend-item"><span>🧩</span> Alzheimer's / Neurodegeneration</div>
-      <div class="legend-item"><span>⚙️</span> ALS / Motor neuron research</div>
+      <div class="legend-item"><span>🧩</span> Disorder research</div>
       <div class="legend-item"><span>❤️‍🩹</span> Cardiovascular research</div>
+      <div class="legend-item"><span>🔬</span> Active clinical trials</div>
     </div>
-    <div class="footer-note">For educational purposes only. Consult a qualified healthcare provider before using any peptide.</div>
+    <div class="footer-note">For educational purposes only. Not medical advice.</div>
   </footer>
 
   <script src="main.js"></script>
