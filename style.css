@@ -1,250 +1,142 @@
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+// ══════════════════════════════════════════════
+//  SYNERGY PAIRS
+// ══════════════════════════════════════════════
+const synergies = [
+  ["node-bpc157",     "node-tb500"],
+  ["node-bpc157",     "node-ghkcu"],
+  ["node-bpc157",     "node-kpv"],
+  ["node-bpc157",     "node-bpc157-b"],
+  ["node-ghkcu",      "node-ghkcu-b"],
+  ["node-cjc1295",    "node-ipamorelin"],
+  ["node-sermorelin", "node-cjc1295"],
+  ["node-igf1lr3",    "node-cjc1295"],
+  ["node-semax",      "node-selank"],
+  ["node-epitalon",   "node-dsip"],
+  ["node-epitalon",   "node-epitalon-l"],
+  ["node-pinealon",   "node-epitalon"],
+  ["node-motsc",      "node-ss31"],
+  ["node-motsc",      "node-motsc-l"],
+  ["node-semaglutide","node-tirzepatide"],
+  ["node-tirzepatide","node-retatrutide"],
+];
 
-html, body {
-  height: 100%;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #0a0c12;
-  color: #e8e8e8;
+// ══════════════════════════════════════════════
+//  ADJACENCY MAP
+// ══════════════════════════════════════════════
+const adjacency = {};
+synergies.forEach(([a, b]) => {
+  if (!adjacency[a]) adjacency[a] = new Set();
+  if (!adjacency[b]) adjacency[b] = new Set();
+  adjacency[a].add(b);
+  adjacency[b].add(a);
+});
+
+// ══════════════════════════════════════════════
+//  APPLY SOLID LANE COLORS (same hex top to bottom)
+// ══════════════════════════════════════════════
+document.querySelectorAll('.lane').forEach(lane => {
+  const hex = lane.dataset.color;
+  if (!hex) return;
+  // The entire lane gets the solid color — header overlay is just rgba(0,0,0,0.25) on top
+  lane.style.backgroundColor = hex;
+});
+
+// ══════════════════════════════════════════════
+//  SVG LINE DRAWING
+// ══════════════════════════════════════════════
+const svg     = document.getElementById('link-overlay');
+const wrapper = document.getElementById('chart-wrapper');
+
+function getCenter(el) {
+  const wRect = wrapper.getBoundingClientRect();
+  const eRect = el.getBoundingClientRect();
+  return {
+    x: eRect.left - wRect.left + eRect.width  / 2 + wrapper.scrollLeft,
+    y: eRect.top  - wRect.top  + eRect.height / 2
+  };
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+function drawLines() {
+  svg.innerHTML = '';
+
+  const W = wrapper.scrollWidth;
+  const H = wrapper.clientHeight;
+  svg.setAttribute('width',  W);
+  svg.setAttribute('height', H);
+  svg.style.width  = W + 'px';
+  svg.style.height = H + 'px';
+
+  synergies.forEach(([id1, id2]) => {
+    const el1 = document.getElementById(id1);
+    const el2 = document.getElementById(id2);
+    if (!el1 || !el2) return;
+
+    const p1 = getCenter(el1);
+    const p2 = getCenter(el2);
+
+    // Horizontal cubic bezier — handles curve between columns cleanly
+    const dx = Math.abs(p2.x - p1.x) * 0.5;
+    const d  = `M ${p1.x} ${p1.y} C ${p1.x + dx} ${p1.y}, ${p2.x - dx} ${p2.y}, ${p2.x} ${p2.y}`;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.classList.add('synergy-line');
+    path.dataset.from = id1;
+    path.dataset.to   = id2;
+    svg.appendChild(path);
+  });
 }
 
-/* ══════════════════════════════════════
-   HEADER — solid delineated banner strip
-══════════════════════════════════════ */
-.site-header {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 2rem;
-  height: 72px;
-  background: #12141f;
-  border-bottom: 3px solid #2a2d45;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+// ══════════════════════════════════════════════
+//  HOVER INTERACTION
+//  - hovered node  → state-hovered  (white glow)
+//  - connected nodes → state-connected (blue glow)
+//  - everything else → state-dimmed (fade out)
+//  - connected lines → state-highlighted (blue glow)
+//  - other lines     → state-dimmed
+// ══════════════════════════════════════════════
+const allNodes = () => document.querySelectorAll('.peptide-node');
+const allLines = () => document.querySelectorAll('.synergy-line');
+
+function clearStates() {
+  allNodes().forEach(n => n.classList.remove('state-hovered', 'state-connected', 'state-dimmed'));
+  allLines().forEach(l => l.classList.remove('state-highlighted', 'state-dimmed'));
 }
 
-.header-logo {
-  font-size: 2rem;
-  line-height: 1;
+document.querySelectorAll('.peptide-node').forEach(node => {
+
+  node.addEventListener('mouseenter', () => {
+    const id      = node.id;
+    const friends = adjacency[id] || new Set();
+
+    // Nodes
+    allNodes().forEach(n => {
+      if (n.id === id) {
+        n.classList.add('state-hovered');
+      } else if (friends.has(n.id)) {
+        n.classList.add('state-connected');
+      } else {
+        n.classList.add('state-dimmed');
+      }
+    });
+
+    // Lines
+    allLines().forEach(line => {
+      const isConnected = line.dataset.from === id || line.dataset.to === id;
+      line.classList.add(isConnected ? 'state-highlighted' : 'state-dimmed');
+    });
+  });
+
+  node.addEventListener('mouseleave', clearStates);
+});
+
+// ══════════════════════════════════════════════
+//  INIT & RESIZE
+// ══════════════════════════════════════════════
+function init() {
+  drawLines();
 }
 
-.header-text h1 {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
-.subtitle {
-  font-size: 0.78rem;
-  color: #5a5f7a;
-  margin-top: 0.1rem;
-}
-
-/* ══════════════════════════════════════
-   CHART WRAPPER — fills all space between header & footer
-══════════════════════════════════════ */
-.chart-wrapper {
-  flex: 1;
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* NO padding — lanes go edge to edge */
-}
-
-/* SVG overlay — covers entire chart area */
-#link-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-  overflow: visible;
-}
-
-/* ══════════════════════════════════════
-   SWIMLANE GRID — flush, no gaps, no padding
-══════════════════════════════════════ */
-.swimlane-grid {
-  display: flex;
-  flex-direction: row;
-  width: max-content;
-  min-width: 100%;
-  height: 100%;
-  gap: 0;
-}
-
-/* ══════════════════════════════════════
-   LANE — full-height solid color strip, NO rounding
-══════════════════════════════════════ */
-.lane {
-  /* width set by JS to fill evenly */
-  min-width: 120px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border-right: 2px solid rgba(0,0,0,0.35);
-  /* background color set by JS — solid, same top to bottom */
-}
-
-.lane:last-child {
-  border-right: none;
-}
-
-/* ── Lane header label ── */
-.lane-header {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 10px 6px 8px;
-  border-bottom: 2px solid rgba(0,0,0,0.3);
-  background: rgba(0,0,0,0.25);
-}
-
-.lane-emoji {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-.lane-title {
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: rgba(255,255,255,0.85);
-  text-align: center;
-  line-height: 1.35;
-}
-
-/* ── Lane body — evenly spaces bubbles top to bottom ── */
-.lane-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 12px 8px;
-}
-
-/* ══════════════════════════════════════
-   PEPTIDE BUBBLE
-══════════════════════════════════════ */
-.peptide-node {
-  width: 88%;
-  max-width: 130px;
-  padding: 6px 8px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.30);
-  border: 1.5px solid rgba(255,255,255,0.20);
-  color: rgba(255,255,255,0.90);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  z-index: 20;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s, opacity 0.15s;
-  white-space: nowrap;
-}
-
-/* ── Hover state: the node being hovered ── */
-.peptide-node.state-hovered {
-  background: rgba(255,255,255,0.95) !important;
-  border-color: #ffffff !important;
-  color: #0a0c12 !important;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.6) !important;
-  transform: scale(1.08);
-}
-
-/* ── Connected state: synergy partners ── */
-.peptide-node.state-connected {
-  background: rgba(80,180,255,0.25) !important;
-  border-color: #50b4ff !important;
-  color: #c8eaff !important;
-  box-shadow: 0 0 0 2px rgba(80,180,255,0.3), 0 0 12px rgba(80,180,255,0.4) !important;
-  transform: scale(1.04);
-}
-
-/* ── Dimmed state: unrelated nodes ── */
-.peptide-node.state-dimmed {
-  opacity: 0.18 !important;
-  transform: scale(0.96);
-}
-
-/* ══════════════════════════════════════
-   SYNERGY LINES
-══════════════════════════════════════ */
-.synergy-line {
-  fill: none;
-  stroke: rgba(255,255,255,0.15);
-  stroke-width: 1.5;
-  stroke-dasharray: 6 5;
-}
-
-.synergy-line.state-highlighted {
-  stroke: #50b4ff;
-  stroke-width: 2.5;
-  stroke-dasharray: none;
-  filter: drop-shadow(0 0 6px rgba(80,180,255,1));
-}
-
-.synergy-line.state-dimmed {
-  stroke: rgba(255,255,255,0.03);
-}
-
-/* ══════════════════════════════════════
-   FOOTER — solid delineated banner strip
-══════════════════════════════════════ */
-.site-footer {
-  flex-shrink: 0;
-  background: #12141f;
-  border-top: 3px solid #2a2d45;
-  padding: 12px 2rem 14px;
-  box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
-}
-
-.footer-title {
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: #3a3f5a;
-  margin-bottom: 8px;
-}
-
-.badge-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 20px;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.75rem;
-  color: #7a7f9a;
-  white-space: nowrap;
-}
-
-.legend-item span {
-  font-size: 0.9rem;
-}
-
-.footer-note {
-  margin-top: 8px;
-  font-size: 0.65rem;
-  color: #2a2f45;
-  font-style: italic;
-}
+window.addEventListener('load',   init);
+window.addEventListener('resize', drawLines);
+wrapper.addEventListener('scroll', drawLines);
