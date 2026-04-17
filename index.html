@@ -8,27 +8,23 @@
 </head>
 <body>
 
-  <!-- ── HEADER BANNER ── -->
+  <!-- ══ HEADER BANNER ══ -->
   <header class="site-header">
-    <div class="header-inner">
-      <div class="header-logo">🧬</div>
-      <div class="header-text">
-        <h1>Beautiful Peptides</h1>
-        <p class="subtitle">An interactive reference map of peptide categories, synergies, and research</p>
-      </div>
+    <span class="header-logo">🧬</span>
+    <div class="header-text">
+      <h1>Beautiful Peptides</h1>
+      <p class="subtitle">An interactive reference map of peptide categories, synergies &amp; research</p>
     </div>
   </header>
 
-  <!-- ── MAIN CHART ── -->
-  <main class="chart-wrapper" id="chart-wrapper">
-
-    <!-- SVG overlay for synergy lines -->
+  <!-- ══ CHART ══ -->
+  <div class="chart-wrapper" id="chart-wrapper">
     <svg id="link-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
 
     <div class="swimlane-grid" id="swimlane-grid">
 
-      <div class="lane" id="lane-repair" data-color="#e07b54" data-label="Repair & Inflammation" data-emoji="🩹">
-        <div class="lane-header"><span class="lane-emoji">🩹</span><span class="lane-title">Repair & Inflammation</span></div>
+      <div class="lane" id="lane-repair" data-color="#c0522a">
+        <div class="lane-header"><div class="lane-emoji">🩹</div><div class="lane-title">Repair &amp;<br>Inflammation</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-bpc157">BPC-157</div>
           <div class="peptide-node" id="node-tb500">TB-500</div>
@@ -38,16 +34,16 @@
         </div>
       </div>
 
-      <div class="lane" id="lane-energy" data-color="#4a9edd" data-label="Energy & Mitochondria" data-emoji="⚡">
-        <div class="lane-header"><span class="lane-emoji">⚡</span><span class="lane-title">Energy & Mitochondria</span></div>
+      <div class="lane" id="lane-energy" data-color="#1a6aaa">
+        <div class="lane-header"><div class="lane-emoji">⚡</div><div class="lane-title">Energy &amp;<br>Mitochondria</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-ss31">SS-31</div>
           <div class="peptide-node" id="node-motsc">MOTS-c</div>
         </div>
       </div>
 
-      <div class="lane" id="lane-recovery" data-color="#5aaf5a" data-label="Recovery & Growth" data-emoji="💪">
-        <div class="lane-header"><span class="lane-emoji">💪</span><span class="lane-title">Recovery & Growth</span></div>
+      <div class="lane" id="lane-recovery" data-color="#2a7a2a">
+        <div class="lane-header"><div class="lane-emoji">💪</div><div class="lane-title">Recovery &amp;<br>Growth</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-sermorelin">Sermorelin</div>
           <div class="peptide-node" id="node-cjc1295">CJC-1295</div>
@@ -57,8 +53,8 @@
         </div>
       </div>
 
-      <div class="lane" id="lane-metabolism" data-color="#b06ec9" data-label="Metabolism & Fat Loss" data-emoji="🔥">
-        <div class="lane-header"><span class="lane-emoji">🔥</span><span class="lane-title">Metabolism & Fat Loss</span></div>
+      <div class="lane" id="lane-metabolism" data-color="#7a2a9a">
+        <div class="lane-header"><div class="lane-emoji">🔥</div><div class="lane-title">Metabolism &amp;<br>Fat Loss</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-semaglutide">Semaglutide</div>
           <div class="peptide-node" id="node-tirzepatide">Tirzepatide</div>
@@ -67,23 +63,23 @@
         </div>
       </div>
 
-      <div class="lane" id="lane-cognitive" data-color="#c9a020" data-label="Cognitive & Focus" data-emoji="🧠">
-        <div class="lane-header"><span class="lane-emoji">🧠</span><span class="lane-title">Cognitive & Focus</span></div>
+      <div class="lane" id="lane-cognitive" data-color="#8a6a00">
+        <div class="lane-header"><div class="lane-emoji">🧠</div><div class="lane-title">Cognitive &amp;<br>Focus</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-semax">Semax</div>
           <div class="peptide-node" id="node-dihexa">Dihexa</div>
         </div>
       </div>
 
-      <div class="lane" id="lane-stress" data-color="#d4845a" data-label="Stress & Anxiety" data-emoji="😌">
-        <div class="lane-header"><span class="lane-emoji">😌</span><span class="lane-title">Stress & Anxiety</span></div>
+      <div class="lane" id="lane-stress" data-color="#9a4a10">
+        <div class="lane-header"><div class="lane-emoji">😌</div><div class="lane-title">Stress &amp;<br>Anxiety</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-selank">Selank</div>
         </div>
       </div>
 
-      <div class="lane" id="lane-sleep" data-color="#5b7fb5" data-label="Sleep" data-emoji="🌙">
-        <div class="lane-header"><span class="lane-emoji">🌙</span><span class="lane-title">Sleep</span></div>
+      <div class="lane" id="lane-sleep" data-color="#1a3a7a">
+        <div class="lane-header"><div class="lane-emoji">🌙</div><div class="lane-title">Sleep</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-epitalon">Epitalon</div>
           <div class="peptide-node" id="node-pinealon">Pinealon</div>
@@ -91,24 +87,24 @@
         </div>
       </div>
 
-      <div class="lane" id="lane-longevity" data-color="#3aaa7a" data-label="Longevity" data-emoji="⏳">
-        <div class="lane-header"><span class="lane-emoji">⏳</span><span class="lane-title">Longevity</span></div>
+      <div class="lane" id="lane-longevity" data-color="#0a6a4a">
+        <div class="lane-header"><div class="lane-emoji">⏳</div><div class="lane-title">Longevity</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-epitalon-l">Epitalon</div>
           <div class="peptide-node" id="node-motsc-l">MOTS-c</div>
         </div>
       </div>
 
-      <div class="lane" id="lane-beauty" data-color="#d4607a" data-label="Beauty & Skin" data-emoji="✨">
-        <div class="lane-header"><span class="lane-emoji">✨</span><span class="lane-title">Beauty & Skin</span></div>
+      <div class="lane" id="lane-beauty" data-color="#9a2a4a">
+        <div class="lane-header"><div class="lane-emoji">✨</div><div class="lane-title">Beauty &amp;<br>Skin</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-ghkcu-b">GHK-Cu</div>
           <div class="peptide-node" id="node-bpc157-b">BPC-157</div>
         </div>
       </div>
 
-      <div class="lane" id="lane-sexual" data-color="#a060c0" data-label="Sexual Health" data-emoji="❤️">
-        <div class="lane-header"><span class="lane-emoji">❤️</span><span class="lane-title">Sexual Health</span></div>
+      <div class="lane" id="lane-sexual" data-color="#6a1a7a">
+        <div class="lane-header"><div class="lane-emoji">❤️</div><div class="lane-title">Sexual<br>Health</div></div>
         <div class="lane-body">
           <div class="peptide-node" id="node-pt141">PT-141</div>
           <div class="peptide-node" id="node-kisspeptin">Kisspeptin</div>
@@ -116,28 +112,26 @@
       </div>
 
     </div>
-  </main>
+  </div>
 
-  <!-- ── FOOTER BADGE LEGEND ── -->
+  <!-- ══ FOOTER LEGEND ══ -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <h3 class="footer-title">Badge Legend</h3>
-      <div class="badge-legend">
-        <div class="legend-item"><span class="badge-icon">🧬</span><span>Naturally occurring in the body</span></div>
-        <div class="legend-item"><span class="badge-icon">✅</span><span>FDA Approved</span></div>
-        <div class="legend-item"><span class="badge-icon">🌍</span><span>Approved in other countries</span></div>
-        <div class="legend-item"><span class="badge-icon">🐭</span><span>Animal / preclinical studies only</span></div>
-        <div class="legend-item"><span class="badge-icon">💊</span><span>Oral bioavailable</span></div>
-        <div class="legend-item"><span class="badge-icon">💉</span><span>Injectable (SubQ / IM)</span></div>
-        <div class="legend-item"><span class="badge-icon">👃</span><span>Intranasal</span></div>
-        <div class="legend-item"><span class="badge-icon">⚠️</span><span>Safety concerns noted</span></div>
-        <div class="legend-item"><span class="badge-icon">🔗</span><span>Common stack partner</span></div>
-        <div class="legend-item"><span class="badge-icon">🧩</span><span>Alzheimer's / Neurodegeneration research</span></div>
-        <div class="legend-item"><span class="badge-icon">⚙️</span><span>ALS / Motor neuron research</span></div>
-        <div class="legend-item"><span class="badge-icon">❤️‍🩹</span><span>Cardiovascular research</span></div>
-      </div>
-      <p class="footer-note">This map is for educational purposes only. Always consult a qualified healthcare provider before using any peptide.</p>
+    <div class="footer-title">BADGE LEGEND</div>
+    <div class="badge-legend">
+      <div class="legend-item"><span>🧬</span> Naturally occurring</div>
+      <div class="legend-item"><span>✅</span> FDA Approved</div>
+      <div class="legend-item"><span>🌍</span> Approved internationally</div>
+      <div class="legend-item"><span>🐭</span> Animal studies only</div>
+      <div class="legend-item"><span>💊</span> Oral bioavailable</div>
+      <div class="legend-item"><span>💉</span> Injectable (SubQ/IM)</div>
+      <div class="legend-item"><span>👃</span> Intranasal</div>
+      <div class="legend-item"><span>⚠️</span> Safety concerns</div>
+      <div class="legend-item"><span>🔗</span> Common stack partner</div>
+      <div class="legend-item"><span>🧩</span> Alzheimer's / Neurodegeneration</div>
+      <div class="legend-item"><span>⚙️</span> ALS / Motor neuron research</div>
+      <div class="legend-item"><span>❤️‍🩹</span> Cardiovascular research</div>
     </div>
+    <div class="footer-note">For educational purposes only. Consult a qualified healthcare provider before using any peptide.</div>
   </footer>
 
   <script src="main.js"></script>
