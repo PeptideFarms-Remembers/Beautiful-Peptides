@@ -1,276 +1,250 @@
-/* ── Reset & Base ── */
+/* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: #0a0c12;
   color: #e8e8e8;
-  min-height: 100vh;
+}
+
+body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-/* ══════════════════════════════
-   HEADER BANNER
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   HEADER — solid delineated banner strip
+══════════════════════════════════════ */
 .site-header {
-  background: linear-gradient(135deg, #0f1117 0%, #1a1030 50%, #0f1117 100%);
-  border-bottom: 1px solid #2a2d3a;
-  padding: 1.6rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.site-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(106,122,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.header-inner {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  max-width: 1600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  gap: 1rem;
+  padding: 0 2rem;
+  height: 72px;
+  background: #12141f;
+  border-bottom: 3px solid #2a2d45;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .header-logo {
-  font-size: 2.8rem;
+  font-size: 2rem;
   line-height: 1;
-  filter: drop-shadow(0 0 12px rgba(106,122,255,0.6));
 }
 
 .header-text h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 0.03em;
-  background: linear-gradient(90deg, #ffffff 0%, #a0aaff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  letter-spacing: 0.04em;
 }
 
 .subtitle {
-  margin-top: 0.3rem;
-  color: #7a7f99;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
+  font-size: 0.78rem;
+  color: #5a5f7a;
+  margin-top: 0.1rem;
 }
 
-/* ══════════════════════════════
-   MAIN CHART AREA
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   CHART WRAPPER — fills all space between header & footer
+══════════════════════════════════════ */
 .chart-wrapper {
   flex: 1;
   position: relative;
-  padding: 1.5rem;
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
+  /* NO padding — lanes go edge to edge */
 }
 
-/* SVG overlay */
+/* SVG overlay — covers entire chart area */
 #link-overlay {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 10;
   overflow: visible;
 }
 
-/* ══════════════════════════════
-   SWIMLANE GRID
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   SWIMLANE GRID — flush, no gaps, no padding
+══════════════════════════════════════ */
 .swimlane-grid {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  min-width: max-content;
-  height: calc(100vh - 180px);
-  min-height: 500px;
-  position: relative;
-  align-items: stretch;
+  width: max-content;
+  min-width: 100%;
+  height: 100%;
+  gap: 0;
 }
 
-/* ══════════════════════════════
-   INDIVIDUAL LANE
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   LANE — full-height solid color strip, NO rounding
+══════════════════════════════════════ */
 .lane {
-  width: 148px;
-  border-radius: 14px;
-  overflow: hidden;
+  /* width set by JS to fill evenly */
+  min-width: 120px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid rgba(0,0,0,0.35);
+  /* background color set by JS — solid, same top to bottom */
+}
+
+.lane:last-child {
+  border-right: none;
+}
+
+/* ── Lane header label ── */
+.lane-header {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  border: 1.5px solid transparent;
-  transition: border-color 0.2s;
-  /* background set by JS using lane color */
-}
-
-.lane-header {
-  padding: 0.7rem 0.5rem 0.6rem;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  /* background set by JS */
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 6px 8px;
+  border-bottom: 2px solid rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.25);
 }
 
 .lane-emoji {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1;
 }
 
 .lane-title {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.85);
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
+/* ── Lane body — evenly spaces bubbles top to bottom ── */
 .lane-body {
   flex: 1;
-  padding: 0.75rem 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  gap: 0;
-  /* background set by JS */
+  padding: 12px 8px;
 }
 
-/* ══════════════════════════════
-   PEPTIDE NODE / BUBBLE
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   PEPTIDE BUBBLE
+══════════════════════════════════════ */
 .peptide-node {
-  width: 118px;
-  background: rgba(255,255,255,0.08);
-  border: 1.5px solid rgba(255,255,255,0.18);
-  border-radius: 50px;
-  padding: 0.45rem 0.5rem;
-  font-size: 0.78rem;
+  width: 88%;
+  max-width: 130px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.30);
+  border: 1.5px solid rgba(255,255,255,0.20);
+  color: rgba(255,255,255,0.90);
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  user-select: none;
   position: relative;
   z-index: 20;
-  user-select: none;
-  color: rgba(255,255,255,0.92);
-  letter-spacing: 0.01em;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s, opacity 0.15s;
   white-space: nowrap;
 }
 
-.peptide-node:hover {
-  background: rgba(255,255,255,0.18);
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: 0 0 14px rgba(255,255,255,0.25);
-  transform: scale(1.05);
-}
-
-/* Hovered node — bright white glow */
+/* ── Hover state: the node being hovered ── */
 .peptide-node.state-hovered {
-  background: rgba(255,255,255,0.22);
-  border-color: #ffffff;
-  box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 6px rgba(255,255,255,0.8);
-  transform: scale(1.07);
-  color: #ffffff;
+  background: rgba(255,255,255,0.95) !important;
+  border-color: #ffffff !important;
+  color: #0a0c12 !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.6) !important;
+  transform: scale(1.08);
 }
 
-/* Connected node — accent color highlight */
+/* ── Connected state: synergy partners ── */
 .peptide-node.state-connected {
-  background: rgba(106,200,255,0.2);
-  border-color: #6ac8ff;
-  box-shadow: 0 0 16px rgba(106,200,255,0.45);
+  background: rgba(80,180,255,0.25) !important;
+  border-color: #50b4ff !important;
+  color: #c8eaff !important;
+  box-shadow: 0 0 0 2px rgba(80,180,255,0.3), 0 0 12px rgba(80,180,255,0.4) !important;
   transform: scale(1.04);
-  color: #d0f0ff;
 }
 
-/* Dimmed nodes when something else is hovered */
+/* ── Dimmed state: unrelated nodes ── */
 .peptide-node.state-dimmed {
-  opacity: 0.3;
-  transform: scale(0.97);
+  opacity: 0.18 !important;
+  transform: scale(0.96);
 }
 
-/* ══════════════════════════════
-   SYNERGY LINES (SVG)
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   SYNERGY LINES
+══════════════════════════════════════ */
 .synergy-line {
-  stroke: rgba(255,255,255,0.12);
-  stroke-width: 1.5;
   fill: none;
-  stroke-dasharray: 5 5;
-  transition: stroke 0.25s, stroke-width 0.25s, opacity 0.25s;
-  opacity: 1;
+  stroke: rgba(255,255,255,0.15);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
 }
 
 .synergy-line.state-highlighted {
-  stroke: #6ac8ff;
+  stroke: #50b4ff;
   stroke-width: 2.5;
-  opacity: 1;
-  filter: drop-shadow(0 0 5px rgba(106,200,255,0.9));
   stroke-dasharray: none;
+  filter: drop-shadow(0 0 6px rgba(80,180,255,1));
 }
 
 .synergy-line.state-dimmed {
-  opacity: 0.04;
+  stroke: rgba(255,255,255,0.03);
 }
 
-/* ══════════════════════════════
-   FOOTER BADGE LEGEND
-══════════════════════════════ */
+/* ══════════════════════════════════════
+   FOOTER — solid delineated banner strip
+══════════════════════════════════════ */
 .site-footer {
-  background: #0f1117;
-  border-top: 1px solid #1e2130;
-  padding: 1.5rem 2rem 2rem;
-}
-
-.footer-inner {
-  max-width: 1600px;
-  margin: 0 auto;
+  flex-shrink: 0;
+  background: #12141f;
+  border-top: 3px solid #2a2d45;
+  padding: 12px 2rem 14px;
+  box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
 }
 
 .footer-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #5a5f7a;
-  margin-bottom: 0.9rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #3a3f5a;
+  margin-bottom: 8px;
 }
 
 .badge-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1.4rem;
-  margin-bottom: 1rem;
+  gap: 6px 20px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  color: #8a8fa8;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #7a7f9a;
+  white-space: nowrap;
 }
 
-.badge-icon {
-  font-size: 1rem;
-  line-height: 1;
+.legend-item span {
+  font-size: 0.9rem;
 }
 
 .footer-note {
-  font-size: 0.72rem;
-  color: #3a3f55;
-  margin-top: 0.5rem;
+  margin-top: 8px;
+  font-size: 0.65rem;
+  color: #2a2f45;
   font-style: italic;
 }
