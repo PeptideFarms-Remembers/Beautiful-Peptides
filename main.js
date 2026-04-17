@@ -1,46 +1,81 @@
-// ── Synergy pairs: [nodeId1, nodeId2]
+// ══════════════════════════════════════════════
+//  SYNERGY PAIRS  [nodeId1, nodeId2]
+// ══════════════════════════════════════════════
 const synergies = [
-  ["node-bpc157", "node-tb500"],
-  ["node-bpc157", "node-ghkcu"],
-  ["node-bpc157", "node-kpv"],
-  ["node-cjc1295", "node-ipamorelin"],
-  ["node-semax", "node-selank"],
-  ["node-epitalon", "node-dsip"],
-  ["node-semaglutide", "node-tirzepatide"],
-  ["node-tirzepatide", "node-retatrutide"],
-  ["node-motsc", "node-ss31"],
-  ["node-sermorelin", "node-cjc1295"],
-  ["node-igf1lr3", "node-cjc1295"],
+  ["node-bpc157",    "node-tb500"],
+  ["node-bpc157",    "node-ghkcu"],
+  ["node-bpc157",    "node-kpv"],
+  ["node-bpc157",    "node-bpc157-b"],   // cross-link to Beauty column
+  ["node-ghkcu",     "node-ghkcu-b"],    // cross-link to Beauty column
+  ["node-cjc1295",   "node-ipamorelin"],
+  ["node-sermorelin","node-cjc1295"],
+  ["node-igf1lr3",   "node-cjc1295"],
+  ["node-semax",     "node-selank"],
+  ["node-epitalon",  "node-dsip"],
+  ["node-epitalon",  "node-epitalon-l"], // cross-link to Longevity column
+  ["node-motsc",     "node-ss31"],
+  ["node-motsc",     "node-motsc-l"],    // cross-link to Longevity column
+  ["node-semaglutide","node-tirzepatide"],
+  ["node-tirzepatide","node-retatrutide"],
+  ["node-pinealon",  "node-epitalon"],
 ];
 
-// ── Apply lane header colors from data-color attribute
-document.querySelectorAll('.lane').forEach(lane => {
-  const color = lane.dataset.color;
-  if (color) {
-    lane.querySelector('.lane-header').style.background = color + '33'; // translucent fill
-    lane.querySelector('.lane-header').style.borderBottom = `2px solid ${color}`;
-    lane.querySelector('.lane-header').style.color = color;
-    lane.style.borderColor = color + '44';
-  }
+// ══════════════════════════════════════════════
+//  BUILD ADJACENCY MAP  { nodeId -> Set of connected nodeIds }
+// ══════════════════════════════════════════════
+const adjacency = {};
+synergies.forEach(([a, b]) => {
+  if (!adjacency[a]) adjacency[a] = new Set();
+  if (!adjacency[b]) adjacency[b] = new Set();
+  adjacency[a].add(b);
+  adjacency[b].add(a);
 });
 
-// ── Draw SVG linking lines
-const svg = document.getElementById('link-overlay');
-const wrapper = document.querySelector('.chart-wrapper');
+// ══════════════════════════════════════════════
+//  APPLY LANE COLORS
+// ══════════════════════════════════════════════
+document.querySelectorAll('.lane').forEach(lane => {
+  const color = lane.dataset.color;
+  if (!color) return;
+
+  // Full-column background: rich tinted dark
+  lane.style.background = hexToRgba(color, 0.18);
+  lane.style.borderColor = hexToRgba(color, 0.45);
+
+  // Header: slightly more opaque
+  const header = lane.querySelector('.lane-header');
+  header.style.background = hexToRgba(color, 0.35);
+
+  // Body: same tint as lane
+  const body = lane.querySelector('.lane-body');
+  body.style.background = hexToRgba(color, 0.10);
+
+  // Tint the peptide nodes with the lane color subtly
+  lane.querySelectorAll('.peptide-node').forEach(node => {
+    node.style.borderColor = hexToRgba(color, 0.45);
+    node.dataset.laneColor = color;
+  });
+});
+
+// ══════════════════════════════════════════════
+//  SVG LINKING LINES
+// ══════════════════════════════════════════════
+const svg    = document.getElementById('link-overlay');
+const wrapper = document.getElementById('chart-wrapper');
 
 function getCenter(el) {
-  const wrapperRect = wrapper.getBoundingClientRect();
-  const elRect = el.getBoundingClientRect();
+  const wRect = wrapper.getBoundingClientRect();
+  const eRect = el.getBoundingClientRect();
   return {
-    x: elRect.left - wrapperRect.left + elRect.width / 2 + wrapper.scrollLeft,
-    y: elRect.top - wrapperRect.top + elRect.height / 2
+    x: eRect.left - wRect.left + eRect.width  / 2 + wrapper.scrollLeft,
+    y: eRect.top  - wRect.top  + eRect.height / 2
   };
 }
 
 function drawLines() {
   svg.innerHTML = '';
-  svg.setAttribute('width', wrapper.scrollWidth);
-  svg.setAttribute('height', wrapper.scrollHeight);
+  svg.style.width  = wrapper.scrollWidth  + 'px';
+  svg.style.height = wrapper.scrollHeight + 'px';
 
   synergies.forEach(([id1, id2]) => {
     const el1 = document.getElementById(id1);
@@ -50,39 +85,76 @@ function drawLines() {
     const p1 = getCenter(el1);
     const p2 = getCenter(el2);
 
-    // Curved bezier path
-    const cx = (p1.x + p2.x) / 2;
-    const cy = Math.min(p1.y, p2.y) - 40;
+    // Smooth cubic bezier — control points offset horizontally
+    const dx = (p2.x - p1.x) * 0.45;
+    const d  = `M ${p1.x} ${p1.y} C ${p1.x + dx} ${p1.y}, ${p2.x - dx} ${p2.y}, ${p2.x} ${p2.y}`;
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', `M ${p1.x} ${p1.y} Q ${cx} ${cy} ${p2.x} ${p2.y}`);
+    path.setAttribute('d', d);
     path.classList.add('synergy-line');
     path.dataset.from = id1;
-    path.dataset.to = id2;
+    path.dataset.to   = id2;
     svg.appendChild(path);
   });
 }
 
-// ── Hover highlight logic
-document.querySelectorAll('.peptide-node').forEach(node => {
+// ══════════════════════════════════════════════
+//  HOVER INTERACTION
+// ══════════════════════════════════════════════
+const allNodes = document.querySelectorAll('.peptide-node');
+
+allNodes.forEach(node => {
   node.addEventListener('mouseenter', () => {
-    const id = node.id;
-    document.querySelectorAll('.synergy-line').forEach(line => {
-      if (line.dataset.from === id || line.dataset.to === id) {
-        line.classList.add('highlighted');
+    const id        = node.id;
+    const connected = adjacency[id] || new Set();
+
+    allNodes.forEach(n => {
+      if (n.id === id) {
+        n.classList.add('state-hovered');
+        n.classList.remove('state-connected', 'state-dimmed');
+      } else if (connected.has(n.id)) {
+        n.classList.add('state-connected');
+        n.classList.remove('state-hovered', 'state-dimmed');
+      } else {
+        n.classList.add('state-dimmed');
+        n.classList.remove('state-hovered', 'state-connected');
       }
     });
-    node.classList.add('active');
+
+    document.querySelectorAll('.synergy-line').forEach(line => {
+      if (line.dataset.from === id || line.dataset.to === id) {
+        line.classList.add('state-highlighted');
+        line.classList.remove('state-dimmed');
+      } else {
+        line.classList.add('state-dimmed');
+        line.classList.remove('state-highlighted');
+      }
+    });
   });
 
   node.addEventListener('mouseleave', () => {
-    document.querySelectorAll('.synergy-line').forEach(line => {
-      line.classList.remove('highlighted');
+    allNodes.forEach(n => {
+      n.classList.remove('state-hovered', 'state-connected', 'state-dimmed');
     });
-    node.classList.remove('active');
+    document.querySelectorAll('.synergy-line').forEach(line => {
+      line.classList.remove('state-highlighted', 'state-dimmed');
+    });
   });
 });
 
-// ── Redraw lines on load and resize
-window.addEventListener('load', drawLines);
+// ══════════════════════════════════════════════
+//  UTILITY: hex color → rgba string
+// ══════════════════════════════════════════════
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+window.addEventListener('load',   drawLines);
 window.addEventListener('resize', drawLines);
+wrapper.addEventListener('scroll', drawLines);
