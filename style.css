@@ -3,130 +3,274 @@
 
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #0f1117;
+  background: #0a0c12;
   color: #e8e8e8;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ── Header ── */
-header {
-  text-align: center;
-  padding: 2rem 1rem 1rem;
+/* ══════════════════════════════
+   HEADER BANNER
+══════════════════════════════ */
+.site-header {
+  background: linear-gradient(135deg, #0f1117 0%, #1a1030 50%, #0f1117 100%);
+  border-bottom: 1px solid #2a2d3a;
+  padding: 1.6rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-header h1 {
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(106,122,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header-logo {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(106,122,255,0.6));
+}
+
+.header-text h1 {
   font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  background: linear-gradient(90deg, #ffffff 0%, #a0aaff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
-  margin-top: 0.4rem;
-  color: #888;
-  font-size: 0.95rem;
+  margin-top: 0.3rem;
+  color: #7a7f99;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
 }
 
-/* ── Chart Wrapper ── */
+/* ══════════════════════════════
+   MAIN CHART AREA
+══════════════════════════════ */
 .chart-wrapper {
+  flex: 1;
   position: relative;
-  padding: 2rem 1rem 4rem;
+  padding: 1.5rem;
   overflow-x: auto;
+  overflow-y: visible;
 }
 
-/* ── SVG Overlay for linking lines ── */
+/* SVG overlay */
 #link-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 10;
+  overflow: visible;
 }
 
-/* ── Swimlane Grid ── */
+/* ══════════════════════════════
+   SWIMLANE GRID
+══════════════════════════════ */
 .swimlane-grid {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 10px;
   min-width: max-content;
+  height: calc(100vh - 180px);
+  min-height: 500px;
   position: relative;
+  align-items: stretch;
 }
 
-/* ── Individual Lane ── */
+/* ══════════════════════════════
+   INDIVIDUAL LANE
+══════════════════════════════ */
 .lane {
-  width: 160px;
-  border-radius: 12px;
+  width: 148px;
+  border-radius: 14px;
   overflow: hidden;
-  background: #1a1d27;
-  border: 1px solid #2a2d3a;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s;
+  /* background set by JS using lane color */
 }
 
 .lane-header {
-  padding: 0.75rem 0.6rem;
-  font-size: 0.78rem;
+  padding: 0.7rem 0.5rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  /* background set by JS */
+}
+
+.lane-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.lane-title {
+  font-size: 0.68rem;
   font-weight: 700;
-  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #fff;
-  /* color set dynamically via JS from data-color */
-  background: #2a2d3a;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  line-height: 1.3;
 }
 
 .lane-body {
+  flex: 1;
   padding: 0.75rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  min-height: 80px;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0;
+  /* background set by JS */
 }
 
-/* ── Peptide Node ── */
+/* ══════════════════════════════
+   PEPTIDE NODE / BUBBLE
+══════════════════════════════ */
 .peptide-node {
-  background: #252836;
-  border: 1.5px solid #3a3d50;
-  border-radius: 8px;
-  padding: 0.5rem 0.6rem;
-  font-size: 0.82rem;
-  font-weight: 500;
+  width: 118px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 50px;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-align: center;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   position: relative;
   z-index: 20;
   user-select: none;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .peptide-node:hover {
-  background: #2e3248;
-  border-color: #6a7aff;
-  box-shadow: 0 0 10px rgba(106, 122, 255, 0.35);
-  transform: translateY(-1px);
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 14px rgba(255,255,255,0.25);
+  transform: scale(1.05);
 }
 
-.peptide-node.active {
-  border-color: #6a7aff;
-  box-shadow: 0 0 16px rgba(106, 122, 255, 0.55);
-  background: #2e3248;
+/* Hovered node — bright white glow */
+.peptide-node.state-hovered {
+  background: rgba(255,255,255,0.22);
+  border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 6px rgba(255,255,255,0.8);
+  transform: scale(1.07);
+  color: #ffffff;
 }
 
-/* ── Synergy Link Lines (SVG) ── */
+/* Connected node — accent color highlight */
+.peptide-node.state-connected {
+  background: rgba(106,200,255,0.2);
+  border-color: #6ac8ff;
+  box-shadow: 0 0 16px rgba(106,200,255,0.45);
+  transform: scale(1.04);
+  color: #d0f0ff;
+}
+
+/* Dimmed nodes when something else is hovered */
+.peptide-node.state-dimmed {
+  opacity: 0.3;
+  transform: scale(0.97);
+}
+
+/* ══════════════════════════════
+   SYNERGY LINES (SVG)
+══════════════════════════════ */
 .synergy-line {
-  stroke: #3a3d50;
+  stroke: rgba(255,255,255,0.12);
   stroke-width: 1.5;
   fill: none;
-  stroke-dasharray: 5 4;
-  transition: stroke 0.25s, stroke-width 0.25s;
-  opacity: 0.5;
+  stroke-dasharray: 5 5;
+  transition: stroke 0.25s, stroke-width 0.25s, opacity 0.25s;
+  opacity: 1;
 }
 
-.synergy-line.highlighted {
-  stroke: #6a7aff;
+.synergy-line.state-highlighted {
+  stroke: #6ac8ff;
   stroke-width: 2.5;
   opacity: 1;
-  filter: drop-shadow(0 0 4px rgba(106, 122, 255, 0.8));
+  filter: drop-shadow(0 0 5px rgba(106,200,255,0.9));
   stroke-dasharray: none;
+}
+
+.synergy-line.state-dimmed {
+  opacity: 0.04;
+}
+
+/* ══════════════════════════════
+   FOOTER BADGE LEGEND
+══════════════════════════════ */
+.site-footer {
+  background: #0f1117;
+  border-top: 1px solid #1e2130;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5a5f7a;
+  margin-bottom: 0.9rem;
+}
+
+.badge-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #8a8fa8;
+}
+
+.badge-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.footer-note {
+  font-size: 0.72rem;
+  color: #3a3f55;
+  margin-top: 0.5rem;
+  font-style: italic;
 }
