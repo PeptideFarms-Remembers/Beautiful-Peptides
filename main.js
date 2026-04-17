@@ -67,7 +67,7 @@ function getCenter(el) {
   const wRect = wrapper.getBoundingClientRect();
   const eRect = el.getBoundingClientRect();
   return {
-    x: eRect.left - wRect.left + eRect.width  / 2 + wrapper.scrollLeft,
+    x: eRect.left - wRect.left + eRect.width  / 2,
     y: eRect.top  - wRect.top  + eRect.height / 2
   };
 }
